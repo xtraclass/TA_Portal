@@ -392,17 +392,6 @@ class Institute extends EntityBase
   }
 
 
-
-  /**
-   * @return the $Id
-   */
-  public function getId()
-  {
-    return $this->Id;
-  }
-
-
-
   /**
    * @return the $HarvesterUrl
    */
@@ -421,16 +410,6 @@ class Institute extends EntityBase
   public function getForHarvest()
   {
     return $this->ForHarvest;
-  }
-
-
-
-  /**
-   * @param field_type $Id
-   */
-  public function setId( $Id )
-  {
-    $this->Id = $Id;
   }
 
 
@@ -500,9 +479,6 @@ class Institute extends EntityBase
   private $experts;
 
   private $publications;
-
-  // TODO move ID to base
-  private $Id;
 
   private $HarvesterUrl;
 

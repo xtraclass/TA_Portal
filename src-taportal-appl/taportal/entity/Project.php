@@ -235,26 +235,6 @@ class Project extends EntityBase
 
 
 
-  /**
-   * @return the $Id
-   */
-  public function getId()
-  {
-    return $this->Id;
-  }
-
-
-
-  /**
-   * @param field_type $Id
-   */
-  public function setId( $Id )
-  {
-    $this->Id = $Id;
-  }
-
-
-
   public function validate()
   {
     if ( $this->isEmpty( $this->ShortTitleE ) )
@@ -300,8 +280,6 @@ class Project extends EntityBase
   private $HomePage;
 
   private $Focus;
-
-  private $Id;
 
 }
 

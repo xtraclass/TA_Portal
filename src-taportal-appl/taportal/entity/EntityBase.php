@@ -352,10 +352,32 @@ abstract class EntityBase
 
 
 
+  /**
+   * @param int $Id
+   */
+  public function setId( $Id )
+  {
+    $this->Id = $Id;
+  }
+
+
+
+  /**
+   * @return int $Id
+   */
+  public function getId()
+  {
+    return $this->Id;
+  }
+
+
+
   public function hasID()
   {
     return !is_null( $this->getId() ) and $this->getId() >= 1;
   }
+
+  protected $Id;
 
 }
 

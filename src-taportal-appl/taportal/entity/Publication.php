@@ -137,26 +137,6 @@ class Publication extends EntityBase
 
 
 
-  /**
-   * @return the $Id
-   */
-  public function getId()
-  {
-    return $this->Id;
-  }
-
-
-
-  /**
-   * @param field_type $Id
-   */
-  public function setId( $Id )
-  {
-    $this->Id = $Id;
-  }
-
-
-
   public function belongsToExistingInstitute()
   {
     return !is_null( $this->Institute ) and !is_null( $this->Institute->getId() ) and $this->Institute->getId() > 0;
@@ -192,8 +172,6 @@ class Publication extends EntityBase
   private $PublType;
 
   private $Institute;
-
-  private $Id;
 
 }
 ?>

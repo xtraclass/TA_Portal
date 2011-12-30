@@ -297,20 +297,6 @@ class Expert extends EntityBase
 
 
 
-  public function getId()
-  {
-    return $this->Id;
-  }
-
-
-
-  public function setId( $Id )
-  {
-    $this->Id = $Id;
-  }
-
-
-
   public function belongsToExistingInstitute()
   {
     return !is_null( $this->Institute ) and !is_null( $this->Institute->getId() ) and $this->Institute->getId() > 0;
@@ -328,7 +314,8 @@ class Expert extends EntityBase
     {
       throw new InvalidArgumentException( 'Firstnames of expert must not be empty.' );
     }
-    // TODO validate should check parent ID?
+  
+   // TODO validate should check parent ID?
   }
 
 
@@ -361,8 +348,6 @@ class Expert extends EntityBase
   private $TAProjectURL;
 
   private $projects;
-
-  private $Id;
 
 }
 

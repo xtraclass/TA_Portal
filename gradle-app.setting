@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <setting name="task-tab">
+    <setting name="show-description" value="true"/>
+  </setting>
+  <setting name="favorites-tab"/>
+  <setting name="command_line-tab"/>
+  <setting name="setup-tab">
+    <setting name="setup">
+      <setting name="custom-gradle-executor"/>
+      <setting name="current-directory" value="C:\Workspace-Zend\TA_Portal"/>
+      <setting name="log-level" value="LIFECYCLE"/>
+      <setting name="stack-trace-level" value="ALWAYS_FULL"/>
+      <setting name="show-output-on-error" value="false"/>
+    </setting>
+  </setting>
+  <setting name="main_panel">
+    <setting name="current-tab" value="Task Tree"/>
+  </setting>
+  <setting name="Application_window-id">
+    <setting name="window_x" value="150"/>
+    <setting name="window_y" value="150"/>
+    <setting name="window_width" value="1335"/>
+    <setting name="window_height" value="800"/>
+    <setting name="extended-state" value="0"/>
+  </setting>
+</root>

@@ -1,0 +1,83 @@
+
+Version hinzufügen zu IWSCTester
+html get or post
+
+write tutorial
+  ISO-8859-1
+  json viewer plugin
+
+Institute -> Expert, Publication
+Expert -> Project (ContactPerson)  
+  
+  
+  
+  
+JSON Daten auf SQL Injection überprüfen  
+Alle Daten in Englisch
+project shorttitleE ohne E  
+
+root USer am Joomla System ist nicht ideal
+  
+  
+  
+  
+Introduction to the data exchange between the web applications of TA portal and certain institutes
+ 
+The TA portal needs the latest data from the institutes, so it performs a web request in regular intervals, maybe once a day, as follows:
+ 
+The TA portal application "opens" a certain URL on the institute's web site.
+The web application of the institute returns all pieces of information (like expert, projects, and so on) as JSON formatted text.
+ 
+An example of such a URL is
+http://technology-assessment.info/run/json/sample
+It shows a possible JSON output.
+Please be aware that this is just a demo page. It does not contain any real data.
+
+It is required that the web applications of the institutes offer such functionality to the TA portal web application.
+
+That should be relatively easy, if the data are available in a database. 
+Then the developers have to write a web page which accesses the database, gathers all required data, and represents them in the JSON format.
+
+The data and the format of such a JSON page are defined in the data format specification.
+You can find the latest version on
+https://docs.google.com/spreadsheet/ccc?key=0AsEN060Ilii4dFgxa1AzUnpXVTdFMWlIVTlXTVIwOVE
+or in the TA portal forum area.
+
+You can validate such JSON text on 
+http://technology-assessment.info/run/json/tester
+to see, if it is correct.
+
+We provided a php program which "converts" some data (i. e. php objects) into JSON text.
+If you write your web page in php, you are free to use the php classes we provide, to ease your task.
+Then you only have to access the database, and store all relevant data in the according php objects.
+
+For an example see FakedEntitiesMaker. 
+Here some Expert, Institute, Publication, and Project objects are created and stored
+in lists (like TheExperts, TheInstituts, ...). 
+Then the JSONBuilder object is used to generate JSON output.
+
+A php web page might look like:
+
+<?php
+/**
+ * This is a small demo program which creates a few entities and
+ * returns them as JSON formatted to the web browser.
+ */
+
+require_once 'taportal/institutes/webservice/base/Classes.php';
+
+header( "Content-type: application/json; charset=ISO-8859-1" );
+header( "Content-Transfer-Encoding: 8bit" );
+header( 'Cache-Control: no-cache, must-revalidate' );
+header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
+
+list( $institutes, $experts, $projects, $publications ) = FakedEntitiesMaker::fakeExample1();
+
+echo JSONBuilder::build( $institutes, $experts, $projects, $publications );
+
+?>
+
+Of course, you will not use the FakedEntityMaker, but access the database and create some entities with real data.
+
+
+If you have any questions, please contact Sara Najafidigehsara. Sara.Najafidigehsara@oeaw.ac.at

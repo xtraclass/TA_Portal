@@ -1,0 +1,112 @@
+webDir = file( 'src-taportal-web' )
+mainAppDir = file( 'src-taportal-appl' )
+deployDir = file( 'deploy' )
+deployWebDir = file( deployDir.toString() + '/web' )
+deployMainAppDir = file( deployDir.toString() + '/mainApp' )
+deployInstitutesAppDir = file( deployDir.toString() + '/institutesApp' )
+
+institutesZipFileName = 'taportal-webservice-php'
+
+
+
+configurations {
+  sshAntTask
+}
+
+
+
+repositories {
+  mavenCentral()
+}
+
+
+
+dependencies {
+  sshAntTask 'org.apache.ant:ant-jsch:1.7.1', 'jsch:jsch:0.1.29'
+}
+
+
+
+task deploy( dependsOn: [ 'copyToDeployDir', 'zipInstitutesApp' ] ) {
+
+}
+
+
+
+task copyToDeployDir( dependsOn: [ 'copyWebToDeployDir', 'copyMainAppToDeployDir', 'copyInstitutesAppToDeployDir' ] ) {
+	
+}
+
+
+
+task copyWebToDeployDir( type: Copy, dependsOn: 'cleanDeployDir' ) {
+	
+	from( webDir ) {
+		include "**/*.php"
+	}
+	into deployWebDir
+}
+
+
+
+task copyMainAppToDeployDir( type: Copy, dependsOn: 'cleanDeployDir' ) {
+	
+  from( mainAppDir ) {
+    include "**/*.php"
+  }
+  into deployMainAppDir
+}
+
+
+
+task copyInstitutesAppToDeployDir( type: Copy, dependsOn: 'cleanDeployDir' ) {
+	
+	from( mainAppDir ) {
+		include "**/*.php"
+		exclude '**/harvester/**'
+		exclude '**/json/ObjectBuilder'
+		exclude '**/json-tester/**'
+	}
+	into deployInstitutesAppDir
+}
+
+
+
+task zipInstitutesApp( type: Zip, dependsOn: 'copyInstitutesAppToDeployDir' ) {
+
+	baseName = institutesZipFileName
+	
+	from( deployInstitutesAppDir ) {
+		include '**/**'
+	}
+	destinationDir = deployDir
+}
+
+
+
+task cleanDeployDir( type: Delete ) {
+
+  delete deployDir
+  deployDir.mkdirs()
+  deployMainAppDir.mkdirs()
+  deployInstitutesAppDir.mkdirs()
+}
+
+
+
+task updateToServer$ {
+ 
+  //def passphrase = System.console().readPassword( '%s: ', 'Please enter the passphrase for the keyfile' )
+ 
+  ant.taskdef( name: 'scp', classname: 'org.apache.tools.ant.taskdefs.optional.ssh.Scp',
+    classpath: configurations.sshAntTask.asPath )
+ 
+  ant.scp( todir: 		'user@host.com:/',
+           keyfile: 	'id_rsa',
+           passphrase: 	'123', 
+           verbose: 	'true' ) {
+    fileset( dir: deployDir ) {
+      include( name: institutesZipFileName + '.zip' )
+    }
+  } 
+}

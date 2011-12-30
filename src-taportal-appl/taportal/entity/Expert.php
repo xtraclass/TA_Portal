@@ -314,8 +314,6 @@ class Expert extends EntityBase
     {
       throw new InvalidArgumentException( 'Firstnames of expert must not be empty.' );
     }
-  
-   // TODO validate should check parent ID?
   }
 
 

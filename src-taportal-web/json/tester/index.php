@@ -13,7 +13,9 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
  * 
  */
 $html = JSONTester::validate();
+echo $html;
 
+/*
 if ( strlen( $html ) === 0 ) 
 {
   echo "<h2>JSON data are OK.</h2>";
@@ -22,6 +24,7 @@ else
 {
   echo $html;
 }
+*/
 ?>
 <br><br>
 <form method="GET" ACTION="">

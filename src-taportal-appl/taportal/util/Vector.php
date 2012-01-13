@@ -140,6 +140,13 @@ class Vector
     return FALSE;
   }
 
+
+
+  public function __toString()
+  {
+    return "[Vector with " . count( $this->data ) . "elements]";
+  }
+
   /**
    * This is the array for storing the elements of the Vector.
    */

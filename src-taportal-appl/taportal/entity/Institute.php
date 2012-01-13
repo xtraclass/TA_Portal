@@ -392,6 +392,7 @@ class Institute extends EntityBase
   }
 
 
+
   /**
    * @return the $HarvesterUrl
    */
@@ -460,22 +461,27 @@ class Institute extends EntityBase
     return "institute [{$this->Id}] {$this->Abbreviation} - {$this->Name}";
   }
 
-  private $Abbreviation;
+  private $Abbreviation; //display
 
-  private $Name;
+  
+  private $Name; //display
 
-  private $CountryCode;
+  
+  private $CountryCode; //display
 
+  
   private $ZipCode;
 
   private $City;
 
   private $Street;
 
-  private $Description;
+  private $Description; //display
 
-  private $URL;
+  
+  private $URL; //display
 
+  
   private $experts;
 
   private $publications;

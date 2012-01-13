@@ -3,6 +3,7 @@
 	<buildpathentry kind="con" path="com.zend.php.phpunit.CONTAINER"/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
 	<buildpathentry kind="src" path="src-taportal-appl"/>
+	<buildpathentry kind="src" path="joomla-web"/>
 	<buildpathentry kind="src" path="src-taportal-web"/>
 	<buildpathentry kind="con" path="org.zend.php.framework.CONTAINER"/>
 </buildpath>

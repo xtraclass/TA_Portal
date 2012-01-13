@@ -22,8 +22,8 @@ create index x_institute_abb on joomla_institute ( abbreviation );
 create index x_institute_nam on joomla_institute ( name );
 create index x_institute_cou on joomla_institute ( countrycode );
 
-insert into joomla_institute ( abbreviation, name, harvesterurl, forharvest ) values ( 'TAPortal', 'JSON-Sample', 'http://technology-assessment.info/run/json/sample', 1 );
-insert into joomla_institute ( abbreviation, name, harvesterurl, forharvest ) values ( 'TAPortal2', 'JSON-Sample2', 'http://technology-assessment.info/run/json/sample2', 1 );
+insert into joomla_institute ( abbreviation, name, countrycode, harvesterurl, forharvest ) values ( 'TAPortal',  'JSON-Sample',  'AT', 'http://technology-assessment.info/run/json/sample', 1 );
+insert into joomla_institute ( abbreviation, name, countrycode, harvesterurl, forharvest ) values ( 'TAPortal2', 'JSON-Sample2', 'AT', 'http://technology-assessment.info/run/json/sample2', 1 );
 select * from joomla_institute;
 
 
@@ -96,7 +96,7 @@ create index x_project_std on joomla_project ( startdate );
 create index x_project_end on joomla_project ( enddate );
 create index x_project_fkcon on joomla_project ( fkcontactperson );
 
-insert into joomla_project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07-01', 'EU', 1 );
+insert into joomla_project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07', 'EU', 1 );
 select * from joomla_project;
 
 

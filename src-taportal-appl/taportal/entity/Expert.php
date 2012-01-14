@@ -318,6 +318,16 @@ class Expert extends EntityBase
 
 
 
+  /* (non-PHPdoc)
+ * @see EntityBase::getSearchableProperties()
+ */
+  protected function getSearchableProperties()
+  {
+    return array( $this->Surname, $this->Firstnames, $this->ExpTitle, $this->EMail, $this->PhoneNumber, $this->SkypeID, $this->Expertise, $this->EmplURL, $this->TAPublicationURL, $this->TAProjectURL );
+  }
+
+
+
   public function __toString()
   {
     return "[Expert {$this->Id}] {$this->Surname}, {$this->Firstnames}, {$this->ExpTitle}, {$this->EMail}, {$this->PhoneNumber}, " . "{$this->SkypeID}, {$this->Expertise}, {$this->EmplURL}, {$this->Institute}, {$this->TAPublicationURL}, {$this->TAProjectURL}";

@@ -19,11 +19,4 @@
 	<natures>
 		<nature>org.eclipse.php.core.PHPNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>joomla-web</name>
-			<type>2</type>
-			<location>C:/SWD/xampp/htdocs/joomla</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -377,6 +377,58 @@ abstract class EntityBase
     return !is_null( $this->getId() ) and $this->getId() >= 1;
   }
 
+
+
+  protected function str( $value )
+  {
+    if ( is_null( $value ) )
+    {
+      return '';
+    }
+    else
+    {
+      return strval( $value );
+    }
+  }
+
+
+
+  protected function contains( $value, $lookFor )
+  {
+    return !( strpos( strval( $value ) ) === FAlSE );
+  }
+
+
+
+  protected function containsAny( $array, $lookFor )
+  {
+    foreach ( $array as $prop )
+    {
+      if ( $this->contains( $prop, $lookFor ) )
+      {
+        return TRUE;
+      }
+    }
+    
+    return FALSE;
+  }
+
+
+
+  public function search( $lookFor )
+  {
+    if ( is_null( $lookFor ) or strlen( $lookFor ) == 0 )
+    {
+      return FALSE;
+    }
+    
+    return $this->containsAny( $this->getSearchableProperties(), $lookFor );
+  }
+
+
+
+  protected abstract function getSearchableProperties();
+
   protected $Id;
 
 }

@@ -20,6 +20,26 @@ final class TheProjects extends Vector
     return $this->add( $x );
   }
 
+
+
+  public function search( $lookFor )
+  {
+    $found = new TheProjects();
+    
+    if ( !is_null( $lookFor ) and strlen( $lookFor ) >= 1 )
+    {
+      for( $i = 0; $i < $this->size(); $i++ )
+      {
+        if ( $this->get( $i )->search( $lookFor ) )
+        {
+          $found->add( $this->get( $i ) );
+        }
+      }
+    }
+    
+    return $found;
+  }
+
 }
 
 ?>

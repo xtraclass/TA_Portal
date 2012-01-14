@@ -256,6 +256,16 @@ class Project extends EntityBase
 
 
 
+  /* (non-PHPdoc)
+ * @see EntityBase::getSearchableProperties()
+ */
+  protected function getSearchableProperties()
+  {
+    return array( $this->ShortTitleE, $this->LongTitleE, $this->ShortDescriptionE, $this->StartDate, $this->EndDate, $this->PartnerCountries, $this->ScopeCountries, $this->HomePage, $this->Focus );
+  }
+
+
+
   public function __toString()
   {
     return "[Project $this->Id] {$this->ShortTitleE}, {$this->LongTitleE}, {$this->ShortDescriptionE}, {$this->StartDate}, {$this->EndDate}, " . "{$this->PartnerCountries}, {$this->ScopeCountries}, {$this->ContactPerson}, {$this->HomePage}, {$this->Focus}";

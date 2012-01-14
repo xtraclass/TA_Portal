@@ -158,6 +158,16 @@ class Publication extends EntityBase
 
 
 
+  /* (non-PHPdoc)
+ * @see EntityBase::getSearchableProperties()
+ */
+  protected function getSearchableProperties()
+  {
+    return array( $this->Quotation, $this->ShortDescription, $this->PublDate, $this->PublType );
+  }
+
+
+
   public function __toString()
   {
     return "[Publication $this->Id] {$this->Quotation}, {$this->ShortDescription}, {$this->PublDate}, {$this->PublType->value()}, {$this->Institute}";

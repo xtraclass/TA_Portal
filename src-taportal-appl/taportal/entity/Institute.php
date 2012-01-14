@@ -449,6 +449,16 @@ class Institute extends EntityBase
 
 
 
+  /* (non-PHPdoc)
+ * @see EntityBase::getSearchableProperties()
+ */
+  protected function getSearchableProperties()
+  {
+    return array( $this->Abbreviation, $this->Abbreviation, $this->Name, $this->CountryCode, $this->ZipCode, $this->City, $this->Street, $this->Description, $this->URL );
+  }
+
+
+
   public function __toString()
   {
     return "[Institute {$this->Id}] {$this->Abbreviation} with {$this->experts->size()} experts and with {$this->publications->size()} publications," . " {$this->Name} {$this->CountryCode} {$this->ZipCode} {$this->City} {$this->Street} {$this->Description} {$this->URL}";

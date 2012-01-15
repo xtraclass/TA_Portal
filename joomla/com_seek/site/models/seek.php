@@ -5,6 +5,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 // import Joomla modelitem library
 jimport( 'joomla.application.component.modelitem' );
 require_once 'taportal/harvester/_Classes.php';
+require_once 'SeekCache.php';
 
 /**
  * Seek Model
@@ -24,6 +25,7 @@ class SeekModelSeek extends JModelItem
 
   public function __construct()
   {
+    parent::__construct();
     $this->init();
   }
 
@@ -55,7 +57,7 @@ class SeekModelSeek extends JModelItem
       $this->readData();
     }
     
-    return $this->institutes;
+    return array( $this->institutes, new TheExperts(), new TheProjects(), new ThePublications() );
   }
 
 
@@ -67,7 +69,7 @@ class SeekModelSeek extends JModelItem
       $this->readData();
     }
     
-    return $this->experts;
+    return array( new TheInstitutes(), $this->experts, new TheProjects(), new ThePublications() );
   }
 
 
@@ -79,7 +81,7 @@ class SeekModelSeek extends JModelItem
       $this->readData();
     }
     
-    return $this->projects;
+    return array( new TheInstitutes(), new TheExperts(), $this->projects, new ThePublications() );
   }
 
 
@@ -91,7 +93,7 @@ class SeekModelSeek extends JModelItem
       $this->readData();
     }
     
-    return $this->publications;
+    return array( new TheInstitutes(), new TheExperts(), new TheProjects(), $this->publications );
   }
 
 

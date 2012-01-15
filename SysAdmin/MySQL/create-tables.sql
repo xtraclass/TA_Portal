@@ -96,7 +96,7 @@ create index x_project_std on joomla_project ( startdate );
 create index x_project_end on joomla_project ( enddate );
 create index x_project_fkcon on joomla_project ( fkcontactperson );
 
-insert into joomla_project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07', 'EU', 1 );
+insert into joomla_project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07-01', 'EU', 1 );
 select * from joomla_project;
 
 

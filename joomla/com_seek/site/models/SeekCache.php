@@ -19,6 +19,12 @@ final class SeekCache
 
   public static function expired()
   {
+    if ( TRUE )
+    {
+      // TODO Remove this if block and implement counter (which stays on 1 all the time)
+      return TRUE;
+    }
+    
     ++SeekCache::$counter;
     
     if ( SeekCache::$counter >= SeekCache::$max )

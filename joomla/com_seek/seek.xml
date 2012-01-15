@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="1.7.0" method="upgrade">
 
-	<name>Seek!!!</name>
+	<name>Seek</name>
 
 	<!-- The following elements are optional and free of formatting constraints -->
 	<creationDate>January 2012</creationDate>
@@ -60,7 +60,7 @@
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>models</folder>
-      <folder>views</folder>
+			<folder>views</folder>
 		</files>
 	</administration>
 

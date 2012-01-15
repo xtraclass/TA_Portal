@@ -96,7 +96,7 @@ create index x_project_std on #__project ( startdate );
 create index x_project_end on #__project ( enddate );
 create index x_project_fkcon on #__project ( fkcontactperson );
 
-insert into #__project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07', 'EU', 1 );
+insert into #__project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07-01', 'EU', 1 );
 select * from #__project;
 
 

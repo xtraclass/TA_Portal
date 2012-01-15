@@ -5,5 +5,6 @@
 	<buildpathentry kind="src" path="src-taportal-appl"/>
 	<buildpathentry kind="src" path="src-taportal-web"/>
 	<buildpathentry kind="src" path="joomla"/>
+	<buildpathentry kind="src" path="joomla-lib"/>
 	<buildpathentry kind="con" path="org.zend.php.framework.CONTAINER"/>
 </buildpath>

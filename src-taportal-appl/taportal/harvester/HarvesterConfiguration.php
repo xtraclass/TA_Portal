@@ -50,7 +50,7 @@ final class HarvesterConfiguration
     {
       $this->databaseHostName = 'localhost';
       $this->databaseUserName = 'root';
-      $this->databasePassword = 'bitnami';
+      $this->databasePassword = '';
       $this->databaseName = 'taportal';
     }
   }

@@ -80,7 +80,7 @@ create table joomla_project (
   longtitle varchar(250) not null,
   shortdescription varchar(500),
   startdate date,
-  enddate time,
+  enddate date,
   partnercountries varchar(150),
   scopecountries varchar(150),
   homepage varchar(250),

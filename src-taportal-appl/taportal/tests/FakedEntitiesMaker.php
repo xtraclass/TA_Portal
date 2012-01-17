@@ -134,6 +134,7 @@ class FakedEntitiesMaker {
     $institute->setAbbreviation( 'Two' )
       ->setName( 'Inst2' )
       ->setURL( 'www.two.at' )
+      ->setCountryCode( 'AT' )
       ->setZipCode( '1010' );
     
     $expert = new Expert();

@@ -193,6 +193,7 @@ final class HarvesterDAO extends DAOBase
         ( !is_null( $institute->getForHarvest() ) ? ', ' . $institute->getForHarvest() : '' ) . /***/
         ')';
       }
+      $me->log( "Performing SQL:\n$sql", NULL, $institute );
       
       mysql_query( $sql, $me->getConnection() );
       
@@ -285,6 +286,7 @@ final class HarvesterDAO extends DAOBase
         ', ' . $expert->getInstitute()->getId() . /***/
         ')';
       }
+      $me->log( "Performing SQL:\n$sql" );
       
       mysql_query( $sql, $me->getConnection() );
       
@@ -373,6 +375,7 @@ final class HarvesterDAO extends DAOBase
         ', ' . $project->getContactPerson()->getId() . /***/
         ')';
       }
+      $me->log( "Performing SQL:\n$sql" );
       
       mysql_query( $sql, $me->getConnection() );
       
@@ -446,6 +449,7 @@ final class HarvesterDAO extends DAOBase
         ', ' . $publication->getInstitute()->getId() . /***/
         ')';
       }
+      $me->log( "Performing SQL:\n$sql" );
       
       mysql_query( $sql, $me->getConnection() );
       
@@ -490,7 +494,7 @@ final class HarvesterDAO extends DAOBase
       $sql = "select id from joomla_institute where abbreviation = '{$institute->getAbbreviation()}' ";
       $row = mysql_fetch_assoc( mysql_query( $sql, $me->getConnection() ) );
       
-      if ( !is_null( $row ) )
+      if ( $row )
       {
         $institute->setId( $row[ 'id' ] );
       }
@@ -528,7 +532,7 @@ final class HarvesterDAO extends DAOBase
       $sql = "select id from joomla_expert where surname = '{$expert->getSurname()}' and firstnames = '{$expert->getFirstnames()}' and fkinstitute = {$expert->getInstitute()->getId()}";
       $row = mysql_fetch_assoc( mysql_query( $sql, $me->getConnection() ) );
       
-      if ( !is_null( $row ) )
+      if ( $row )
       {
         $expert->setId( $row[ 'id' ] );
       }
@@ -566,7 +570,7 @@ final class HarvesterDAO extends DAOBase
       $sql = "select id from joomla_project where shorttitle = '{$project->getShortTitleE()}' and fkcontactperson = {$project->getContactPerson()->getId()}";
       $row = mysql_fetch_assoc( mysql_query( $sql, $me->getConnection() ) );
       
-      if ( !is_null( $row ) )
+      if ( $row )
       {
         $project->setId( $row[ 'id' ] );
       }
@@ -611,7 +615,7 @@ final class HarvesterDAO extends DAOBase
       }
       $row = mysql_fetch_assoc( mysql_query( $sql, $me->getConnection() ) );
       
-      if ( !is_null( $row ) )
+      if ( $row )
       {
         $publication->setId( $row[ 'id' ] );
       }

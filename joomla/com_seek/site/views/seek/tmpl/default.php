@@ -66,11 +66,86 @@
 	height: 3em;
 }
 -->
-</style>
+</style><?php
+
+$prefix = $_SERVER[ 'SERVER_NAME' ] == 'localhost' ? '/joomla' : '';
+
+?>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script
+	src="<?php
+echo $prefix;
+?>/media/media/js/jquery.colorbox-min.js"></script>
+<link rel="stylesheet"
+	href="<?php
+echo $prefix;
+?>/media/media/css/colorbox.css" />
+
+
+
+<p><a class='inline' href="#inline_content">Inline HTML</a></p>
+<div style='display: none'>
+<div id='inline_content' style='padding: 10px; background: #FFFFEE;'>
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+
+<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
+fiowej
+
+</div>
+</div>
+
+
+
 <?php
 // No direct access to this file
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once 'taportal/harvester/_Classes.php';
+
+// Counter for DIVs with additional information which are shown by colorbox/lightbox/jQuery
+$lightbox = 0;
 
 //
 //
@@ -266,7 +341,7 @@ for( $i = 0; $i < $this->publications->size(); $i++ )
     echo "<td class='seektd'><b>" . t( $x->getQuotation() ) . "</b></td>";
     echo "<td class='seektd'>" . t( $x->getPublDate() ) . "</td>";
     echo "<td class='seektd'>" . t( $x->getPublType()->value() ) . "</td>";
-    echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
+    echo "<td class='seektd'>" . institute( $x->getInstitute(), &$lightbox ) . "</td>";
     echo "</tr>\n";
   }
 }
@@ -274,9 +349,9 @@ echo "</table><br><br>\n";
 
 
 
-function institute( Institute $institute )
+function institute( Institute $institute, $lightbox )
 {
-  return $institute->getAbbreviation();
+  return lightboxForInstitute( $institute, $lightbox );
 }
 
 
@@ -366,4 +441,53 @@ function t( $value )
   }
 }
 
+
+
+function lightboxForInstitute( $institute, &$lightbox )
+{
+  if ( is_null( $institute ) )
+  {
+    return '&nbsp;';
+  }
+  else
+  {
+    $html = '<a class="lightboxlink' . $lightbox . '" href="#lightboxdiv' . $lightbox . '">' . $institute->getAbbreviation() . '</a>';
+    $html = $html . divForInstitute( $institute, $lightbox );
+    $lightbox++;
+    return $html;
+  }
+}
+
+
+
+function divForInstitute( $institute, $lightbox )
+{
+  if ( is_null( $institute ) )
+  {
+    return '';
+  }
+  else
+  {
+    $html = "<div style='display:none'>" . /***/
+    "<div id='lightboxdiv" . $lightbox . "' style='padding:10px; background:#FFFFEE;'>" . /***/
+    '<p>' . $institute->getName() . /***/
+    "</div>" . /***/
+    "</div>";
+    
+    return $html;
+  }
+}
+
 ?>
+<script>
+	$( function() {
+  	try {
+  		$(".lightboxlink0").colorbox( { inline:true, width:'70%', opacity:'50%' } );
+  		$(".lightboxlink1").colorbox( { inline:true, width:'70%', opacity:'50%' } );
+  		$(".lightboxlink2").colorbox( { inline:true, width:'70%', opacity:'50%' } );
+  	}
+  	catch ( error ) {
+  		alert( "Error: " + error );
+  	}
+	} );
+</script>

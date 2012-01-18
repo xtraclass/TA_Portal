@@ -8,22 +8,10 @@ Harvester importiert country code mit Länge 1
 
 
 
-Version hinzufügen zu IWSCTester
 html get or post
-
-write tutorial
-  ISO-8859-1
-  json viewer plugin
-
-Institute -> Expert, Publication
-Expert -> Project (ContactPerson)  
-  
-  
-  
-  
+ISO-8859-1
 JSON Daten auf SQL Injection überprüfen  
 Alle Daten in Englisch
 project shorttitleE ohne E  
-
 root USer am Joomla System ist nicht ideal
   

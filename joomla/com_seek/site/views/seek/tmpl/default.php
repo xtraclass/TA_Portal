@@ -384,6 +384,26 @@ try
       }
     }
     echo "</table><br><br>\n";
+    
+    ?>
+<p><strong>The List of TA institutes which are in the PACITA consortium</strong></p>
+<ul>
+<li><a href="http://www.tekno.dk/subpage.php3?language=uk&amp;page=forside.php3" target="_blank" title="Danish Board of Technology">Danish Board of Technology</a> (Denmark)</li>
+<li><a href="http://www.kit.edu/english/index.php" target="_blank" title="Karlsruhe Institute of Technology">Karlsruhe Institute of Technology</a> (Germany)</li>
+<li><a href="http://www.rathenau.nl/en.html" target="_blank" title="The Rathenau Institute">The Rathenau Institute</a> (Netherlands)</li>
+<li><a href="http://www.teknologiradet.no/default1.aspx?m=3" target="_blank" title="Norwegian Board of Technology ">Norwegian Board of Technology </a>(Norway)</li>
+<li><a href="http://www.oeaw.ac.at/ita/welcome.htm" target="_blank" title="The Institute of Technology Assessment">The Institute of Technology Assessment</a> (Austria)</li>
+<li><a href="http://www.arcfund.net/" target="_blank" title="Applied Research and Communications Fund">Applied Research and Communications Fund</a> (Bulgaria)</li>
+<li><a href="http://www.itqb.unl.pt/" target="_blank">Institute of Technology of Biology and Chemistry</a> (Portugal)</li>
+<li><a href="http://www.spiral.ulg.ac.be/" target="_blank">Institute Society and Technology</a> (Flanders, Belgium)</li>
+<li><a href="http://www.fundaciorecerca.cat/" target="_blank">Catalan Institution Foundation for Research Support</a> (Catalonia, Spain)</li>
+<li><a href="http://www.ta-swiss.ch/en/" target="_blank">Swiss Centre for Technology Assessment</a> (Switzerland)</li>
+<li><a href="http://www.zef.lt/zef/index.php" target="_blank">Knowledge Economy Forum</a> (Lithuania)</li>
+<li><a href="http://www.tc.cz/home_/" target="_blank">Technology Centre ASCR</a> (Czech Republic)</li>
+<li><a href="http://www.spiral.ulg.ac.be/" target="_blank">University of Li&egrave;ge, SPIRAL Research Centre</a> (Wallonia, Belgium)</li>
+<li><a href="http://www.ucc.ie/en/">University College Cork</a> (Ireland)</li>
+<li><a href="http://mta.hu/english/" target="_blank">Hungarian Academy of Sciences</a> (Hungary)</li>
+</ul><?php 
   }
   
   //

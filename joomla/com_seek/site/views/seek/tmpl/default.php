@@ -130,7 +130,7 @@ function rowWithTableForExpert( Expert $expert, $cols )
 
 function makeDivTableForInstitute( Institute $x )
 {
-  echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
+  echo "<table style='border-width:0%; border-color:#FFFFFF;'' width='100%' cellpadding='2' cellspacing='2'>\n";
   
   echo "<tr>\n";
   echo "<td class='seektdsmall' colspan='5'>Belongs to institute:</td>\n";
@@ -159,7 +159,7 @@ function makeDivTableForInstitute( Institute $x )
 
 function makeDivTableForExpert( Expert $x )
 {
-  echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
+  echo "<table style='border-width:0%; border-color:#FFFFFF;'' width='100%' cellpadding='2' cellspacing='2'>\n";
  
   echo "<tr>\n";
   echo "<td class='seektdsmall' colspan='7'>Contact person:</td>\n";

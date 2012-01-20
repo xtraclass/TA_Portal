@@ -100,23 +100,23 @@ function rowWithTableForInstitute( Institute $institute, $cols )
 function makeDivTableForInstitute( Institute $institute )
 {
   echo "<div style='font-size:90%, padding:10px; border-width:1px; border-style:solid; border-color:#CCCCCC;'>\n";
-  echo '<table border="1" width="100%" cellpadding="2" cellspacing="2">\n';
+  echo "<table border='1' width='100%' cellpadding='2' cellspacing='2'>\n";
   
-  echo '<tr>v';
-  echo "<td class='seektdlabels'>Abbr.</td>v";
-  echo "<td class='seektdlabels'>Name</td>v";
+  echo "<tr>\n";
+  echo "<td class='seektdlabels'>Abbr.</td>\n";
+  echo "<td class='seektdlabels'>Name</td>\n";
   echo "<td class='seektdlabels'>Country</td>\n";
   echo "<td class='seektdlabels'>Description</td>\n";
   echo "<td class='seektdlabels'>Web</td>\n";
-  echo '</tr>\n';
+  echo "</tr>\n";
   
-  echo '<tr>\n';
-  echo '<td valign="top"><div style="text-align:left;">' . $institute->getAbbreviation() . '</div></td>\n';
-  echo '<td valign="top"><div style="text-align:left;">' . $institute->getName() . '</div></td>\n';
-  echo '<td valign="top"><div style="text-align:left;">' . $institute->getCountryCode() . '</div></td>\n';
-  echo '<td valign="top"><div style="text-align:left;">' . $institute->getDescription() . '</div></td>\n';
-  echo '<td valign="top"><div style="text-align:left;">' . $institute->getURL() . '</div></td>\n';
-  echo '</tr>\n';
+  echo "<tr>\n";
+  echo "<td valign='top'><div style='text-align:left;'>" . $institute->getAbbreviation() . "</div></td>\n";
+  echo "<td valign='top'><div style='text-align:left;'>" . $institute->getName() . "</div></td>\n";
+  echo "<td valign='top'><div style='text-align:left;'>" . $institute->getCountryCode() . "</div></td>\n";
+  echo "<td valign='top'><div style='text-align:left;'>" . $institute->getDescription() . "</div></td>\n";
+  echo "<td valign='top'><div style='text-align:left;'>" . $institute->getURL() . "</div></td>\n";
+  echo "</tr>\n";
   
   echo "</table>\n";
   echo "</div>\n";
@@ -177,7 +177,8 @@ function url( $url )
 
 function shortenURL( $url )
 {
-  $pos = strpos( $url, "http://" );
+  $pos = strpos( $url, "
+  http: //" );
   if ( $pos === 0 )
   {
     $url2 = substr( $url, 7 );

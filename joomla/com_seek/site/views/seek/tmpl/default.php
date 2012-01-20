@@ -44,6 +44,7 @@
 	border-spacing: 2 ! important;
 	cellspacing: 0 ! important;
 	cellpadding: 4 ! important;
+	font-weight: bold;
 }
 
 .seektdsmall {
@@ -132,6 +133,10 @@ function makeDivTableForInstitute( Institute $x )
   echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
   
   echo "<tr>\n";
+  echo "<td class='seektdsmall' colspan='5'>Belongs to institute:</td>\n";
+  echo "</tr>\n";
+  
+  echo "<tr>\n";
   echo "<td class='seektdsmall'>Abbr.</td>\n";
   echo "<td class='seektdsmall'>Name</td>\n";
   echo "<td class='seektdsmall'>Country</td>\n";
@@ -155,6 +160,10 @@ function makeDivTableForInstitute( Institute $x )
 function makeDivTableForExpert( Expert $x )
 {
   echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
+ 
+  echo "<tr>\n";
+  echo "<td class='seektdsmall' colspan='7'>Contact person:</td>\n";
+  echo "</tr>\n";
   
   echo "<tr>\n";
   echo "<td class='seektdsmall'>Surname</td>";
@@ -167,13 +176,13 @@ function makeDivTableForExpert( Expert $x )
   echo "</tr>\n";
   
   echo "<tr>\n";
-  echo "<td class='seektd'><b>" . t( $x->getSurname() ) . "</b></td>";
-  echo "<td class='seektd'><b>" . t( $x->getFirstnames() ) . "</b></td>";
-  echo "<td class='seektd'>" . t( $x->getExpTitle() ) . "</td>";
-  echo "<td class='seektd'>" . email( $x->getEMail() ) . "</td>";
-  echo "<td class='seektd'>" . t( $x->getPhoneNumber() ) . "</td>";
-  echo "<td class='seektd'>" . t( $x->getSkypeID() ) . "</td>";
-  echo "<td class='seektd'>" . t( $x->getExpertise() ) . "</td>";
+  echo "<td class='seektdsmall'>" . t( $x->getSurname() ) . "</td>";
+  echo "<td class='seektdsmall'>" . t( $x->getFirstnames() ) . "</td>";
+  echo "<td class='seektdsmall'>" . t( $x->getExpTitle() ) . "</td>";
+  echo "<td class='seektdsmall'>" . email( $x->getEMail() ) . "</td>";
+  echo "<td class='seektdsmall'>" . t( $x->getPhoneNumber() ) . "</td>";
+  echo "<td class='seektdsmall'>" . t( $x->getSkypeID() ) . "</td>";
+  echo "<td class='seektdsmall'>" . t( $x->getExpertise() ) . "</td>";
   echo "</tr>\n";
   
   echo "</table>\n";
@@ -368,7 +377,7 @@ try
         else
           echo "<tr class='seektr'>";
         echo "<td class='seektd'>" . t( $x->getAbbreviation() ) . "</td>";
-        echo "<td class='seektd'><b>" . t( $x->getName() ) . "</b></td>";
+        echo "<td class='seektd'>" . t( $x->getName() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getCountryCode() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getDescription() ) . "</td>";
         echo "<td class='seektd'>" . url( $x->getURL() ) . "</td>";
@@ -421,8 +430,8 @@ try
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";
-        echo "<td class='seektd'><b>" . t( $x->getSurname() ) . "</b></td>";
-        echo "<td class='seektd'><b>" . t( $x->getFirstnames() ) . "</b></td>";
+        echo "<td class='seektd'>" . t( $x->getSurname() ) . "</td>";
+        echo "<td class='seektd'>" . t( $x->getFirstnames() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getExpTitle() ) . "</td>";
         echo "<td class='seektd'>" . email( $x->getEMail() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getPhoneNumber() ) . "</td>";
@@ -478,7 +487,7 @@ try
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";
-        echo "<td class='seektd'><b>" . t( $x->getShortTitleE() ) . "</b></td>";
+        echo "<td class='seektd'>" . t( $x->getShortTitleE() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getLongTitleE() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getShortDescriptionE() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getStartDate() ) . "</td>";
@@ -531,7 +540,7 @@ try
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";
-        echo "<td class='seektd'><b>" . t( $x->getQuotation() ) . "</b></td>";
+        echo "<td class='seektd'>" . t( $x->getQuotation() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getPublDate() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getPublType()->value() ) . "</td>";
         //      echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";

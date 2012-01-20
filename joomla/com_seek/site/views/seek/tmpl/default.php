@@ -88,7 +88,8 @@ function rowWithTableForInstitute( Institute $institute, $cols )
 {
   $columns = $cols - 1;
   
-  echo "<tr border='0'><td>&nbsp;</td><td colspan='{$columns}' border='0'>";
+  echo "<tr style='border-width:0%;' ><td style='border-width:0%;' >&nbsp;</td>";
+  echo "<td style='border-width:0%;' colspan='{$columns}' border='0'>";
   
   makeDivTableForInstitute( $institute );
   
@@ -99,7 +100,7 @@ function rowWithTableForInstitute( Institute $institute, $cols )
 
 function makeDivTableForInstitute( Institute $institute )
 {
-  echo "<table border='0' width='100%' cellpadding='2' cellspacing='2'>\n";
+  echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
   
   echo "<tr>\n";
   echo "<td class='seektdlabels'>Abbr.</td>\n";

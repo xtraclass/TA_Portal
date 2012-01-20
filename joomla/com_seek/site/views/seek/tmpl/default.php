@@ -46,6 +46,15 @@
 	cellpadding: 4 ! important;
 }
 
+.seektdsmall {
+	border-width: 0;
+	border-color: #FFFFFF;
+	border-spacing: 2 ! important;
+	cellspacing: 0 ! important;
+	cellpadding: 4 ! important;
+	font-size: 80%;
+}
+
 .seektdlabels {
 	border-width: 0;
 	border-color: #FFFFFF;
@@ -88,34 +97,83 @@ function rowWithTableForInstitute( Institute $institute, $cols )
 {
   $columns = $cols - 1;
   
-  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>";
-  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$columns}' border='0'>";
+  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
+  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$columns}' border='0'>\n";
   
   makeDivTableForInstitute( $institute );
   
-  echo "</td></tr>";
+  echo "</td></tr>\n";
+  
+  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
+  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$columns}' border='0'>\n";
+  echo "</td></tr>\n";
 }
 
 
 
-function makeDivTableForInstitute( Institute $institute )
+function rowWithTableForExpert( Expert $expert, $cols )
+{
+  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
+  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$cols}' border='0'>\n";
+  
+  makeDivTableForExpert( $expert );
+  
+  echo "</td></tr>\n";
+  
+  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
+  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$cols}' border='0'>\n";
+  echo "</td></tr>\n";
+}
+
+
+
+function makeDivTableForInstitute( Institute $x )
 {
   echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
   
   echo "<tr>\n";
-  echo "<td class='seektd'>Abbr.</td>\n";
-  echo "<td class='seektd'>Name</td>\n";
-  echo "<td class='seektd'>Country</td>\n";
-  echo "<td class='seektd'>Description</td>\n";
-  echo "<td class='seektd'>Web</td>\n";
+  echo "<td class='seektdsmall'>Abbr.</td>\n";
+  echo "<td class='seektdsmall'>Name</td>\n";
+  echo "<td class='seektdsmall'>Country</td>\n";
+  echo "<td class='seektdsmall'>Description</td>\n";
+  echo "<td class='seektdsmall'>Web</td>\n";
   echo "</tr>\n";
   
   echo "<tr>\n";
-  echo "<td class='seektd'>{$institute->getAbbreviation()}</div></td>\n";
-  echo "<td class='seektd'>{$institute->getName()}</td>\n";
-  echo "<td class='seektd'>{$institute->getCountryCode()}</td>\n";
-  echo "<td class='seektd'>{$institute->getDescription()}</td>\n";
-  echo "<td class='seektd'>{$institute->getURL()}</td>\n";
+  echo "<td class='seektdsmall'>{$x->getAbbreviation()}</div></td>\n";
+  echo "<td class='seektdsmall'>{$x->getName()}</td>\n";
+  echo "<td class='seektdsmall'>{$x->getCountryCode()}</td>\n";
+  echo "<td class='seektdsmall'>{$x->getDescription()}</td>\n";
+  echo "<td class='seektdsmall'>{$x->getURL()}</td>\n";
+  echo "</tr>\n";
+  
+  echo "</table>\n";
+}
+
+
+
+function makeDivTableForExpert( Expert $x )
+{
+  echo "<table style='border-width:0%;' width='100%' cellpadding='2' cellspacing='2'>\n";
+  
+  echo "<tr>\n";
+  echo "<td class='seektdsmall'>Surname</td>";
+  echo "<td class='seektdsmall'>First name(s)</td>";
+  echo "<td class='seektdsmall'>Title</td>";
+  echo "<td class='seektdsmall'>E-Mail</td>";
+  echo "<td class='seektdsmall'>Phone number</td>";
+  echo "<td class='seektdsmall'>Skype ID</td>";
+  echo "<td class='seektdsmall'>Expertise</td>";
+  echo "</tr>\n";
+  
+  echo "<tr>\n";
+  echo "<td class='seektd'><b>" . t( $x->getSurname() ) . "</b></td>";
+  echo "<td class='seektd'><b>" . t( $x->getFirstnames() ) . "</b></td>";
+  echo "<td class='seektd'>" . t( $x->getExpTitle() ) . "</td>";
+  echo "<td class='seektd'>" . email( $x->getEMail() ) . "</td>";
+  echo "<td class='seektd'>" . t( $x->getPhoneNumber() ) . "</td>";
+  echo "<td class='seektd'>" . t( $x->getSkypeID() ) . "</td>";
+  echo "<td class='seektd'>" . t( $x->getExpertise() ) . "</td>";
   echo "</tr>\n";
   
   echo "</table>\n";
@@ -388,13 +446,13 @@ try
     if ( $this->projects->size() >= 2 )
     {
       echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='7'>" . $this->projects->size() . " projects</td>";
+      echo "<td class='seektdhead' colspan='6'>" . $this->projects->size() . " projects</td>";
       echo "</tr>";
     }
     else if ( $this->projects->size() == 1 )
     {
       echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='7'>1 project</td>";
+      echo "<td class='seektdhead' colspan='6'>1 project</td>";
       echo "</tr>";
     }
     
@@ -407,7 +465,7 @@ try
       echo "<td class='seektdlabels'>Start</td>";
       echo "<td class='seektdlabels'>End</td>";
       echo "<td class='seektdlabels'>Home Page</td>";
-      echo "<td class='seektdlabels'>Contact Person</td>";
+      //echo "<td class='seektdlabels'>Contact Person</td>";
       echo "</tr>\n";
     }
     
@@ -426,8 +484,9 @@ try
         echo "<td class='seektd'>" . t( $x->getStartDate() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getEndDate() ) . "</td>";
         echo "<td class='seektd'>" . url( $x->getHomePage() ) . "</td>";
-        echo "<td class='seektd'>" . expert( $x->getContactPerson() ) . "</td>";
+        //echo "<td class='seektd'>" . expert( $x->getContactPerson() ) . "</td>";
         echo "</tr>\n";
+        rowWithTableForExpert( $x->getContactPerson(), 6 );
       }
     }
     echo "</table><br><br>\n";

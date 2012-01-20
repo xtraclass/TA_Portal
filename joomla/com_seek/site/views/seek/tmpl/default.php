@@ -48,7 +48,6 @@
 }
 
 .seektdsmall {
-	border-width: 0;
 	border-color: #FFFFFF;
 	border-spacing: 2 ! important;
 	cellspacing: 0 ! important;

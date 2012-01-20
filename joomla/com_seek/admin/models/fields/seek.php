@@ -17,7 +17,7 @@ class JFormFieldSeek extends JFormFieldList
    *
    * @var		string
    */
-  protected $type = 'seek';
+  protected $type = 'institutes';
 
 
 

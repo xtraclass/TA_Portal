@@ -10,7 +10,7 @@
 	<copyright>Copyright Thomas Eichberger, 2012 WIEN</copyright>
 
 	<!-- The version string is recorded in the components table -->
-	<version>1.14</version>
+	<version>1.15</version>
 
 	<!-- The description is optional and defaults to the name -->
 	<description>This component displays data of the TA institutes.
@@ -63,5 +63,13 @@
 			<folder>views</folder>
 		</files>
 	</administration>
+
+	<config>
+		<fieldset name="params">
+			<field name="kind" type="text" default="a" label="Kind of display"
+				description="Enter a for all, i for institutes, e for experts, u for publications, r for projects."
+				size="3"></field>
+		</fieldset>
+	</config>
 
 </extension>

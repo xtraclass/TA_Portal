@@ -84,274 +84,333 @@ echo $prefix;
 
 
 
-<p><a class='inline' href="#inline_content">Inline HTML</a></p>
-<div style='display: none'>
-<div id='inline_content' style='padding: 10px; background: #FFFFEE;'>
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-
-<p>jefd jsöjfös djfj pwi4ejfh ksdjöc ejf089euw ifjlkösdj öklsjf ösjd
-fiowej
-
-</div>
-</div>
-
-
 
 <?php
 // No direct access to this file
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once 'taportal/harvester/_Classes.php';
 
+// ----------------------------------------------------------------------
 // Counter for DIVs with additional information which are shown by colorbox/lightbox/jQuery
-$lightbox = 0;
+//$lightbox = 0;
 
+
+// ----------------------------------------------------------------------
+$kind = $_GET[ 'kind' ];
+if ( is_null( $kind ) or $kind == '' or $kind == 'a' )
+{
+  $showI = TRUE;
+  $showE = TRUE;
+  $showR = TRUE;
+  $showU = TRUE;
+}
+else if ( $kind == 'i' )
+{
+  $showI = TRUE;
+  $showE = FALSE;
+  $showR = FALSE;
+  $showU = FALSE;
+}
+else if ( $kind == 'e' )
+{
+  $showI = FALSE;
+  $showE = TRUE;
+  $showR = FALSE;
+  $showU = FALSE;
+}
+else if ( $kind == 'r' )
+{
+  $showI = FALSE;
+  $showE = FALSE;
+  $showR = TRUE;
+  $showU = FALSE;
+}
+else if ( $kind == 'u' )
+{
+  $showI = FALSE;
+  $showE = FALSE;
+  $showR = FALSE;
+  $showU = TRUE;
+}
+
+// ----------------------------------------------------------------------
 //
 //
 //
-echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
-
-if ( $this->institutes->size() >= 2 )
+if ( $showI )
 {
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='5'>" . $this->institutes->size() . " institutes</td>";
-  echo "</tr>";
-}
-else if ( $this->institutes->size() == 1 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='5'>1 institute</td>";
-  echo "</tr>";
-}
-
-if ( $this->institutes->size() >= 1 )
-{
-  echo "<tr class='seektrlabels'>";
-  echo "<td class='seektdlabels'>Abbr.</td>";
-  echo "<td class='seektdlabels'>Name</td>";
-  echo "<td class='seektdlabels'>Country</td>";
-  echo "<td class='seektdlabels'>Description</td>";
-  echo "<td class='seektdlabels'>Web</td>";
-  echo "</tr>\n";
-}
-
-for( $i = 0; $i < $this->institutes->size(); $i++ )
-{
-  $x = $this->institutes->get( $i );
-  if ( !is_null( $x ) )
+  echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
+  
+  if ( $this->institutes->size() >= 2 )
   {
-    if ( $i % 2 == 1 )
-      echo "<tr class='seektr2'>";
-    else
-      echo "<tr class='seektr'>";
-    echo "<td class='seektd'>" . t( $x->getAbbreviation() ) . "</td>";
-    echo "<td class='seektd'><b>" . t( $x->getName() ) . "</b></td>";
-    echo "<td class='seektd'>" . t( $x->getCountryCode() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getDescription() ) . "</td>";
-    echo "<td class='seektd'>" . url( $x->getURL() ) . "</td>";
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='5'>" . $this->institutes->size() . " institutes</td>";
+    echo "</tr>";
+  }
+  else if ( $this->institutes->size() == 1 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='5'>1 institute</td>";
+    echo "</tr>";
+  }
+  
+  if ( $this->institutes->size() >= 1 )
+  {
+    echo "<tr class='seektrlabels'>";
+    echo "<td class='seektdlabels'>Abbr.</td>";
+    echo "<td class='seektdlabels'>Name</td>";
+    echo "<td class='seektdlabels'>Country</td>";
+    echo "<td class='seektdlabels'>Description</td>";
+    echo "<td class='seektdlabels'>Web</td>";
     echo "</tr>\n";
   }
-}
-echo "</table><br><br>\n";
-
-//
-//
-//
-echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
-
-if ( $this->experts->size() >= 2 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='8'>" . $this->experts->size() . " experts</td>";
-  echo "</tr>";
-}
-else if ( $this->experts->size() == 1 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='8'>1 expert</td>";
-  echo "</tr>";
-}
-
-if ( $this->experts->size() >= 1 )
-{
-  echo "<tr class='seektrlabels'>";
-  echo "<td class='seektdlabels'>Surname</td>";
-  echo "<td class='seektdlabels'>First name(s)</td>";
-  echo "<td class='seektdlabels'>Title</td>";
-  echo "<td class='seektdlabels'>E-Mail</td>";
-  echo "<td class='seektdlabels'>Phone number</td>";
-  echo "<td class='seektdlabels'>Skype ID</td>";
-  echo "<td class='seektdlabels'>Expertise</td>";
-  echo "<td class='seektdlabels'>Institute</td>";
-  echo "</tr>\n";
-}
-
-for( $i = 0; $i < $this->experts->size(); $i++ )
-{
-  $x = $this->experts->get( $i );
-  if ( !is_null( $x ) )
+  
+  for( $i = 0; $i < $this->institutes->size(); $i++ )
   {
-    if ( $i % 2 == 1 )
-      echo "<tr class='seektr2'>";
-    else
-      echo "<tr class='seektr'>";
-    echo "<td class='seektd'><b>" . t( $x->getSurname() ) . "</b></td>";
-    echo "<td class='seektd'><b>" . t( $x->getFirstnames() ) . "</b></td>";
-    echo "<td class='seektd'>" . t( $x->getExpTitle() ) . "</td>";
-    echo "<td class='seektd'>" . email( $x->getEMail() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getPhoneNumber() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getSkypeID() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getExpertise() ) . "</td>";
-    echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
+    $x = $this->institutes->get( $i );
+    if ( !is_null( $x ) )
+    {
+      if ( $i % 2 == 1 )
+        echo "<tr class='seektr2'>";
+      else
+        echo "<tr class='seektr'>";
+      echo "<td class='seektd'>" . t( $x->getAbbreviation() ) . "</td>";
+      echo "<td class='seektd'><b>" . t( $x->getName() ) . "</b></td>";
+      echo "<td class='seektd'>" . t( $x->getCountryCode() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getDescription() ) . "</td>";
+      echo "<td class='seektd'>" . url( $x->getURL() ) . "</td>";
+      echo "</tr>\n";
+    }
+  }
+  echo "</table><br><br>\n";
+}
+
+//
+//
+//
+if ( $showE )
+{
+  echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
+  
+  if ( $this->experts->size() >= 2 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='7'>" . $this->experts->size() . " experts</td>";
+    echo "</tr>";
+  }
+  else if ( $this->experts->size() == 1 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='7'>1 expert</td>";
+    echo "</tr>";
+  }
+  
+  if ( $this->experts->size() >= 1 )
+  {
+    echo "<tr class='seektrlabels'>";
+    echo "<td class='seektdlabels'>Surname</td>";
+    echo "<td class='seektdlabels'>First name(s)</td>";
+    echo "<td class='seektdlabels'>Title</td>";
+    echo "<td class='seektdlabels'>E-Mail</td>";
+    echo "<td class='seektdlabels'>Phone number</td>";
+    echo "<td class='seektdlabels'>Skype ID</td>";
+    echo "<td class='seektdlabels'>Expertise</td>";
+    //echo "<td class='seektdlabels'>Institute</td>";
     echo "</tr>\n";
   }
-}
-echo "</table><br><br>\n";
-
-//
-//
-//
-echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
-
-if ( $this->projects->size() >= 2 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='7'>" . $this->projects->size() . " projects</td>";
-  echo "</tr>";
-}
-else if ( $this->projects->size() == 1 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='7'>1 project</td>";
-  echo "</tr>";
-}
-
-if ( $this->projects->size() >= 1 )
-{
-  echo "<tr class='seektrlabels'>";
-  echo "<td class='seektdlabels'>Short Title</td>";
-  echo "<td class='seektdlabels'>Long Title</td>";
-  echo "<td class='seektdlabels'>Description</td>";
-  echo "<td class='seektdlabels'>Start</td>";
-  echo "<td class='seektdlabels'>End</td>";
-  echo "<td class='seektdlabels'>Home Page</td>";
-  echo "<td class='seektdlabels'>Contact Person</td>";
-  echo "</tr>\n";
-}
-
-for( $i = 0; $i < $this->projects->size(); $i++ )
-{
-  $x = $this->projects->get( $i );
-  if ( !is_null( $x ) )
+  
+  for( $i = 0; $i < $this->experts->size(); $i++ )
   {
-    if ( $i % 2 == 1 )
-      echo "<tr class='seektr2'>";
-    else
-      echo "<tr class='seektr'>";
-    echo "<td class='seektd'><b>" . t( $x->getShortTitleE() ) . "</b></td>";
-    echo "<td class='seektd'>" . t( $x->getLongTitleE() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getShortDescriptionE() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getStartDate() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getEndDate() ) . "</td>";
-    echo "<td class='seektd'>" . url( $x->getHomePage() ) . "</td>";
-    echo "<td class='seektd'>" . expert( $x->getContactPerson() ) . "</td>";
+    $x = $this->experts->get( $i );
+    if ( !is_null( $x ) )
+    {
+      if ( $i % 2 == 1 )
+        echo "<tr class='seektr2'>";
+      else
+        echo "<tr class='seektr'>";
+      echo "<td class='seektd'><b>" . t( $x->getSurname() ) . "</b></td>";
+      echo "<td class='seektd'><b>" . t( $x->getFirstnames() ) . "</b></td>";
+      echo "<td class='seektd'>" . t( $x->getExpTitle() ) . "</td>";
+      echo "<td class='seektd'>" . email( $x->getEMail() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getPhoneNumber() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getSkypeID() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getExpertise() ) . "</td>";
+      //echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
+      echo "</tr>\n";
+      echo rowWithTableForInstitute( $x->getInstitute(), 7 );
+    }
+  }
+  echo "</table><br><br>\n";
+}
+
+//
+//
+//
+if ( $showR )
+{
+  echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
+  
+  if ( $this->projects->size() >= 2 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='7'>" . $this->projects->size() . " projects</td>";
+    echo "</tr>";
+  }
+  else if ( $this->projects->size() == 1 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='7'>1 project</td>";
+    echo "</tr>";
+  }
+  
+  if ( $this->projects->size() >= 1 )
+  {
+    echo "<tr class='seektrlabels'>";
+    echo "<td class='seektdlabels'>Short Title</td>";
+    echo "<td class='seektdlabels'>Long Title</td>";
+    echo "<td class='seektdlabels'>Description</td>";
+    echo "<td class='seektdlabels'>Start</td>";
+    echo "<td class='seektdlabels'>End</td>";
+    echo "<td class='seektdlabels'>Home Page</td>";
+    echo "<td class='seektdlabels'>Contact Person</td>";
     echo "</tr>\n";
   }
-}
-echo "</table><br><br>\n";
-
-//
-//
-//
-echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
-
-if ( $this->publications->size() >= 2 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='4'>" . $this->publications->size() . " publications</td>";
-  echo "</tr>";
-}
-else if ( $this->publications->size() == 1 )
-{
-  echo "<tr class='seektr'>";
-  echo "<td class='seektdhead' colspan='4'>1 publication</td>";
-  echo "</tr>";
-}
-
-if ( $this->publications->size() >= 1 )
-{
-  echo "<tr class='seektrlabels'>";
-  echo "<td class='seektdlabels'>Quotation</td>";
-  echo "<td class='seektdlabels'>Publ. Date</td>";
-  echo "<td class='seektdlabels'>Type</td>";
-  echo "<td class='seektdlabels'>Institute</td>";
-  echo "</tr>\n";
-}
-
-for( $i = 0; $i < $this->publications->size(); $i++ )
-{
-  $x = $this->publications->get( $i );
-  if ( !is_null( $x ) )
+  
+  for( $i = 0; $i < $this->projects->size(); $i++ )
   {
-    if ( $i % 2 == 1 )
-      echo "<tr class='seektr2'>";
-    else
-      echo "<tr class='seektr'>";
-    echo "<td class='seektd'><b>" . t( $x->getQuotation() ) . "</b></td>";
-    echo "<td class='seektd'>" . t( $x->getPublDate() ) . "</td>";
-    echo "<td class='seektd'>" . t( $x->getPublType()->value() ) . "</td>";
-    echo "<td class='seektd'>" . institute( $x->getInstitute(), &$lightbox ) . "</td>";
+    $x = $this->projects->get( $i );
+    if ( !is_null( $x ) )
+    {
+      if ( $i % 2 == 1 )
+        echo "<tr class='seektr2'>";
+      else
+        echo "<tr class='seektr'>";
+      echo "<td class='seektd'><b>" . t( $x->getShortTitleE() ) . "</b></td>";
+      echo "<td class='seektd'>" . t( $x->getLongTitleE() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getShortDescriptionE() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getStartDate() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getEndDate() ) . "</td>";
+      echo "<td class='seektd'>" . url( $x->getHomePage() ) . "</td>";
+      echo "<td class='seektd'>" . expert( $x->getContactPerson() ) . "</td>";
+      echo "</tr>\n";
+    }
+  }
+  echo "</table><br><br>\n";
+}
+
+//
+//
+//
+if ( $showU )
+{
+  echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
+  
+  if ( $this->publications->size() >= 2 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='3'>" . $this->publications->size() . " publications</td>";
+    echo "</tr>";
+  }
+  else if ( $this->publications->size() == 1 )
+  {
+    echo "<tr class='seektr'>";
+    echo "<td class='seektdhead' colspan='3'>1 publication</td>";
+    echo "</tr>";
+  }
+  
+  if ( $this->publications->size() >= 1 )
+  {
+    echo "<tr class='seektrlabels'>";
+    echo "<td class='seektdlabels'>Quotation</td>";
+    echo "<td class='seektdlabels'>Publ. Date</td>";
+    echo "<td class='seektdlabels'>Type</td>";
+    //echo "<td class='seektdlabels'>Institute</td>";
     echo "</tr>\n";
   }
+  
+  for( $i = 0; $i < $this->publications->size(); $i++ )
+  {
+    $x = $this->publications->get( $i );
+    if ( !is_null( $x ) )
+    {
+      if ( $i % 2 == 1 )
+        echo "<tr class='seektr2'>";
+      else
+        echo "<tr class='seektr'>";
+      echo "<td class='seektd'><b>" . t( $x->getQuotation() ) . "</b></td>";
+      echo "<td class='seektd'>" . t( $x->getPublDate() ) . "</td>";
+      echo "<td class='seektd'>" . t( $x->getPublType()->value() ) . "</td>";
+      //      echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
+      echo "</tr>\n";
+      echo rowWithTableForInstitute( $x->getInstitute(), 3 );
+    }
+  }
+  echo "</table><br><br>\n";
 }
-echo "</table><br><br>\n";
 
 
 
-function institute( Institute $institute, $lightbox )
+//function institute( Institute $institute/*, $lightbox */)
+//{
+//  return lightboxForInstitute( $institute, $lightbox );
+//}
+
+
+function rowWithTableForInstitute( Institute $institute, $cols )
 {
-  return lightboxForInstitute( $institute, $lightbox );
+  $html = "<tr><td colspan='{$cols}'>" . /***/
+  makeDivTableForInstitute( $institute ) . /***/
+  "</td></tr>";
+  
+  return $html;
+}
+
+
+
+function makeDivTableForInstitute( Institute $institute )
+{
+  $html = "<div style='font-size:90%, padding:10px; background:#E0E0E0; border-width:2px; border-style:solid; border-color:#000000;'>" . /***/
+  '<table border="1" width="100%" cellpadding="2" cellspacing="2">' . /***/
+  '<tr>' . /***/
+  '<td valign="top" colspan="2"><div style="text-align:center;text-weight:bold;">' . 'Institute' . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'Abbreviation' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getAbbreviation() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'Name' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getName() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'Country Code' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getCountryCode() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'Zip Code' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getZipCode() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'City' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getCity() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'Street' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getStreet() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'Description' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getDescription() . '</div></td>' . /***/
+  '</tr>' . /***/
+  '<tr>' . /***/
+  '<td valign="top"><div style="text-align:right;">' . 'URL' . '</div></td>' . /***/
+  '<td valign="top"><div style="text-align:left;">' . $institute->getURL() . '</div></td>' . /***/
+  '</tr>' . /***/
+  "</table>" . /***/
+  "</div>" . /***/
+  "</div>";
+  
+  return $html;
 }
 
 
@@ -441,53 +500,89 @@ function t( $value )
   }
 }
 
+//function lightboxForInstitute( $institute, &$lightbox )
+//{
+//  if ( is_null( $institute ) )
+//  {
+//    return '&nbsp;';
+//  }
+//  else
+//  {
+//    $html = '<a class="lightboxlink' . $lightbox . '" href="#lightboxdiv' . $lightbox . '">' . $institute->getAbbreviation() . '</a>';
+//    $html = $html . lightboxDivForInstitute( $institute, $lightbox );
+//    $lightbox++;
+//    return $html;
+//  }
+//}
 
 
-function lightboxForInstitute( $institute, &$lightbox )
-{
-  if ( is_null( $institute ) )
-  {
-    return '&nbsp;';
-  }
-  else
-  {
-    $html = '<a class="lightboxlink' . $lightbox . '" href="#lightboxdiv' . $lightbox . '">' . $institute->getAbbreviation() . '</a>';
-    $html = $html . divForInstitute( $institute, $lightbox );
-    $lightbox++;
-    return $html;
-  }
-}
+//function lightboxDivForInstitute( $institute, $lightbox )
+//{
+//  if ( is_null( $institute ) )
+//  {
+//    return '';
+//  }
+//  else
+//  {
+//    $html = "<div style='display:none'>" . /***/
+//    "<div id='lightboxdiv" . $lightbox . "' style='font-size:90%, padding:10px; background:#E0E0E0; border-width:2px; border-style:solid; border-color:#000000;'>" . /***/
+//    '<table border="1" width="100%" cellpadding="2" cellspacing="2">' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top" colspan="2"><div style="text-align:center;text-weight:bold;">' . 'Institute' . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'Abbreviation' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getAbbreviation() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'Name' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getName() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'Country Code' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getCountryCode() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'Zip Code' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getZipCode() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'City' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getCity() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'Street' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getStreet() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'Description' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getDescription() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    '<tr>' . /***/
+//    '<td valign="top"><div style="text-align:right;">' . 'URL' . '</div></td>' . /***/
+//    '<td valign="top"><div style="text-align:left;">' . $institute->getURL() . '</div></td>' . /***/
+//    '</tr>' . /***/
+//    "</table>" . /***/
+//    "</div>" . /***/
+//    "</div>";
+//    
+//    return $html;
+//  }
+//}
 
 
-
-function divForInstitute( $institute, $lightbox )
-{
-  if ( is_null( $institute ) )
-  {
-    return '';
-  }
-  else
-  {
-    $html = "<div style='display:none'>" . /***/
-    "<div id='lightboxdiv" . $lightbox . "' style='padding:10px; background:#FFFFEE;'>" . /***/
-    '<p>' . $institute->getName() . /***/
-    "</div>" . /***/
-    "</div>";
-    
-    return $html;
-  }
-}
-
-?>
+/*
 <script>
 	$( function() {
   	try {
-  		$(".lightboxlink0").colorbox( { inline:true, width:'70%', opacity:'50%' } );
-  		$(".lightboxlink1").colorbox( { inline:true, width:'70%', opacity:'50%' } );
-  		$(".lightboxlink2").colorbox( { inline:true, width:'70%', opacity:'50%' } );
+  		$(".lightboxlink0").colorbox( { inline:true, width:'80%', opacity:'10%' } );
+  		$(".lightboxlink1").colorbox( { inline:true, width:'80%', opacity:'10%' } );
+  		$(".lightboxlink2").colorbox( { inline:true, width:'80%', opacity:'10%' } );
   	}
   	catch ( error ) {
   		alert( "Error: " + error );
   	}
 	} );
 </script>
+*/
+?>

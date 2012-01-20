@@ -426,7 +426,7 @@ try
       $x = $this->experts->get( $i );
       if ( !is_null( $x ) )
       {
-        if ( $i % 2 == 1 )
+        if ( $i % 1 == 0 )
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";
@@ -483,7 +483,7 @@ try
       $x = $this->projects->get( $i );
       if ( !is_null( $x ) )
       {
-        if ( $i % 2 == 1 )
+        if ( $i % 1 == 0 )
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";
@@ -536,7 +536,7 @@ try
       $x = $this->publications->get( $i );
       if ( !is_null( $x ) )
       {
-        if ( $i % 2 == 1 )
+        if ( $i % 1 == 0 )
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";

@@ -99,48 +99,28 @@ function rowWithTableForInstitute( Institute $institute, $cols )
 
 function makeDivTableForInstitute( Institute $institute )
 {
-  $html = "<div style='font-size:90%, padding:10px; border-width:1px; border-style:solid; border-color:#CCCCCC;'>" . /***/
-  '<table border="1" cellpadding="2" cellspacing="2">' . /***/
-  '<tr>' . /***/
-  '<td valign="top" colspan="2"><div style="text-align:center;text-weight:bold;">' . 'Institute' . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'Abbreviation' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getAbbreviation() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'Name' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getName() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'Country Code' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getCountryCode() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'Zip Code' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getZipCode() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'City' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getCity() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'Street' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getStreet() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'Description' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getDescription() . '</div></td>' . /***/
-  '</tr>' . /***/
-  '<tr>' . /***/
-  '<td valign="top"><div style="text-align:right;">' . 'URL' . '</div></td>' . /***/
-  '<td valign="top"><div style="text-align:left;">' . $institute->getURL() . '</div></td>' . /***/
-  '</tr>' . /***/
-  "</table>" . /***/
-  "</div>" . /***/
-  "</div>";
+  echo "<div style='font-size:90%, padding:10px; border-width:1px; border-style:solid; border-color:#CCCCCC;'>\n";
+  echo '<table border="1" width="100%" cellpadding="2" cellspacing="2">\n';
   
-  return $html;
+  echo '<tr>v';
+  echo "<td class='seektdlabels'>Abbr.</td>v";
+  echo "<td class='seektdlabels'>Name</td>v";
+  echo "<td class='seektdlabels'>Country</td>\n";
+  echo "<td class='seektdlabels'>Description</td>\n";
+  echo "<td class='seektdlabels'>Web</td>\n";
+  echo '</tr>\n';
+  
+  echo '<tr>\n';
+  echo '<td valign="top"><div style="text-align:left;">' . $institute->getAbbreviation() . '</div></td>\n';
+  echo '<td valign="top"><div style="text-align:left;">' . $institute->getName() . '</div></td>\n';
+  echo '<td valign="top"><div style="text-align:left;">' . $institute->getCountryCode() . '</div></td>\n';
+  echo '<td valign="top"><div style="text-align:left;">' . $institute->getDescription() . '</div></td>\n';
+  echo '<td valign="top"><div style="text-align:left;">' . $institute->getURL() . '</div></td>\n';
+  echo '</tr>\n';
+  
+  echo "</table>\n";
+  echo "</div>\n";
+  echo "</div>\n";
 }
 
 

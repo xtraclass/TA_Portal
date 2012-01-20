@@ -88,11 +88,11 @@ function rowWithTableForInstitute( Institute $institute, $cols )
 {
   $columns = $cols - 1;
   
-  $html = "<tr><td>&nbsp;</td><td colspan='{$columns}'>" . /***/
-  makeDivTableForInstitute( $institute ) . /***/
-  "</td></tr>";
+  echo "<tr><td>&nbsp;</td><td colspan='{$columns}'>";
   
-  return $html;
+  makeDivTableForInstitute( $institute );
+  
+  echo "</td></tr>";
 }
 
 
@@ -119,7 +119,6 @@ function makeDivTableForInstitute( Institute $institute )
   echo "</tr>\n";
   
   echo "</table>\n";
-  echo "</div>\n";
   echo "</div>\n";
 }
 
@@ -374,7 +373,7 @@ try
         echo "<td class='seektd'>" . t( $x->getExpertise() ) . "</td>";
         //echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
         echo "</tr>\n";
-        echo rowWithTableForInstitute( $x->getInstitute(), 7 );
+        rowWithTableForInstitute( $x->getInstitute(), 7 );
       }
     }
     echo "</table><br><br>\n";

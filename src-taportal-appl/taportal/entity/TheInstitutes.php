@@ -36,6 +36,10 @@ final class TheInstitutes extends Vector
         }
       }
     }
+    else
+    {
+      return $this;
+    }
     
     return $found;
   }

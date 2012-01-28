@@ -395,7 +395,7 @@ abstract class EntityBase
 
   protected function contains( $value, $lookFor )
   {
-    return !( strpos( strval( $value ) ) === FAlSE );
+    return !( strpos( strtolower( strval( $value ) ), $lookFor ) === FAlSE );
   }
 
 

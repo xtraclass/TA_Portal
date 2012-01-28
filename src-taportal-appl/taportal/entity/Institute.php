@@ -454,7 +454,7 @@ class Institute extends EntityBase
  */
   protected function getSearchableProperties()
   {
-    return array( $this->Abbreviation, $this->Abbreviation, $this->Name, $this->CountryCode, $this->ZipCode, $this->City, $this->Street, $this->Description, $this->URL );
+    return array( $this->Abbreviation, $this->Name, $this->CountryCode, $this->ZipCode, $this->City, $this->Street, $this->Description, $this->URL );
   }
 
 

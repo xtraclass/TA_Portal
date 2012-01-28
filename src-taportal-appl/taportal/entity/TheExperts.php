@@ -36,6 +36,10 @@ final class TheExperts extends Vector
         }
       }
     }
+    else
+    {
+      return $this;
+    }
     
     return $found;
   }

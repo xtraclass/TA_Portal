@@ -36,6 +36,10 @@ final class TheProjects extends Vector
         }
       }
     }
+    else
+    {
+      return $this;
+    }
     
     return $found;
   }

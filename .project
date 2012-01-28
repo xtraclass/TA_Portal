@@ -19,4 +19,16 @@
 	<natures>
 		<nature>org.eclipse.php.core.PHPNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>joomla/com_seek/administrator</name>
+			<type>2</type>
+			<location>C:/SWD/xampp/htdocs/joomla/administrator/components/com_seek</location>
+		</link>
+		<link>
+			<name>joomla/com_seek/site</name>
+			<type>2</type>
+			<location>C:/SWD/xampp/htdocs/joomla/components/com_seek</location>
+		</link>
+	</linkedResources>
 </projectDescription>

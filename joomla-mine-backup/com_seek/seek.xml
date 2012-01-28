@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.7.0" method="upgrade">
+
+	<name>Seek</name>
+
+	<!-- The following elements are optional and free of formatting constraints -->
+	<creationDate>January 2012</creationDate>
+	<author>Thomas Eichberger</author>
+	<authorEmail>thomas.eichberger@gmail.com</authorEmail>
+	<copyright>Copyright Thomas Eichberger, 2012 WIEN</copyright>
+
+	<!-- The version string is recorded in the components table -->
+	<version>1.15</version>
+
+	<!-- The description is optional and defaults to the name -->
+	<description>This component displays data of the TA institutes.
+	</description>
+
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update> <!-- Runs on update; New in 1.7 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<!-- Site Main File Copy Section -->
+	<!-- Note the folder attribute: This attribute describes the folder to copy 
+		FROM in the package to install therefore files copied in this section are 
+		copied from /site/ in the package -->
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>seek.php</filename>
+		<filename>controller.php</filename>
+		<folder>views</folder>
+		<folder>models</folder>
+	</files>
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu>Seek - Administration</menu>
+
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder to 
+			copy FROM in the package to install therefore files copied in this section 
+			are copied from /admin/ in the package -->
+
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>seek.php</filename>
+			<filename>controller.php</filename>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+
+	<config>
+		<fieldset name="params">
+			<field name="kind" type="text" default="a" label="Kind of display"
+				description="Enter a for all, i for institutes, e for experts, u for publications, r for projects."
+				size="3"></field>
+		</fieldset>
+	</config>
+
+</extension>

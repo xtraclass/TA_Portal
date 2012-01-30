@@ -361,6 +361,7 @@ try
   echo "<input type='text' name='x' value='$reqSearchText' size='30' class='input ' />\n";
   echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
   echo "<input type='submit' value='Submit' class='button'/>\n";
+  echo "<input type='hidden' value='$tab' name='whichtab'>\n";
   //echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
   //echo "<input type='reset' value='Clear' class='button'/>\n";
   echo "</form>\n";
@@ -382,6 +383,7 @@ try
   $kind = $_GET[ 'kind' ];
   if ( is_null( $kind ) or $kind == '' or $kind == 'a' )
   {
+    $kind = 'i';
     $showI = TRUE;
     $showE = TRUE;
     $showR = TRUE;
@@ -415,6 +417,15 @@ try
     $showR = FALSE;
     $showU = TRUE;
   }
+  else
+  {
+    $kind = 'i';
+    $showI = TRUE;
+    $showE = TRUE;
+    $showR = TRUE;
+    $showU = TRUE;
+  }
+  
   
   // ----------------------------------------------------------------------
   // ----------------------------------------------------------------------
@@ -683,5 +694,5 @@ $( "#linke2" ).click( function() { showTab( "e" )} );
 $( "#linkr2" ).click( function() { showTab( "r" )} );
 $( "#linku2" ).click( function() { showTab( "u" )} );
 
-showTab( "<?php echo $tab; ?>" );
+showTab( "<?php echo $kind; ?>" );
 </script>

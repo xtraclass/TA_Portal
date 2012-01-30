@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="organictabs.css">
 <script
-	src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
+	src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
 <script>
 
 function showTab( which ) {
@@ -38,7 +38,7 @@ function showTab( which ) {
 	  $( "#linku2" ).show();
 	  
   	$( "#link" + which + "2").hide();
-  	$( "#link" + which + "1").show().addClass( "current");
+  	$( "#link" + which + "1").removeClass( "noncurrent").addClass( "current").show();
   }
 	
 }
@@ -58,37 +58,30 @@ $showResultsWanted = isset( $reqSearchText );
 
 //echo "<p>reqSearchText = $reqSearchText, showResultsWanted = $showResultsWanted\n";
 
-
-$tab = $_GET[ 't' ];
-if ( !isset( $tab ) )
-{
-  $tab = 'i';
-}
-
 ?><style>
 <!--
 .seektable {
 	border-width: 0;
 	border-color: #FFFFFF;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 }
 
 .seektr {
 	border-width: 0;
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	height: 2em;
 }
 
 .seektr2 {
 	border-width: 0;
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	background-color: #F6F6FF;
 	height: 2em;
 }
@@ -96,9 +89,9 @@ if ( !isset( $tab ) )
 .seektrlabels {
 	border-width: 0;
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	background-color: #F6F6FF;
 	height: 2.5em;
 	font-weight: bold;
@@ -108,35 +101,35 @@ if ( !isset( $tab ) )
 .seektd {
 	border-width: 0;
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	font-weight: bold;
 }
 
 .seektdsmall {
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	font-size: 80%;
 }
 
 .seektdlabels {
 	border-width: 0;
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	font-weight: bold;
 }
 
 .seektdhead {
 	border-width: 0;
 	border-color: #FFFFFF;
-	border-spacing: 2 ! important;
-	cellspacing: 0 ! important;
-	cellpadding: 4 ! important;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
 	background-color: #FFFFE0;
 	font-weight: bold;
 	height: 3em;
@@ -146,12 +139,12 @@ if ( !isset( $tab ) )
 	text-decoration: none;
 }
 
-#linki .current,#linke .current,#linkr .current,#linku .current {
-	background: #FFDDDD;
+.current {
+	background: #FFFFDD;
 	font-weight: bold;
 }
 
-#linki .noncurrent,#linke .noncurrent,#linkr .noncurrent,#linku .noncurrent
+.noncurrent
 	{
 	background: #DDDDDD;
 }
@@ -361,7 +354,6 @@ try
   echo "<input type='text' name='x' value='$reqSearchText' size='30' class='input ' />\n";
   echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
   echo "<input type='submit' value='Submit' class='button'/>\n";
-  echo "<input type='hidden' value='$tab' name='whichtab'>\n";
   //echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
   //echo "<input type='reset' value='Clear' class='button'/>\n";
   echo "</form>\n";

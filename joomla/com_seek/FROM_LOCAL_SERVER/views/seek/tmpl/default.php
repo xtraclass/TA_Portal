@@ -42,6 +42,14 @@ function showTab( which ) {
   }
 	
 }
+
+function changeCursorToLink() {
+	$(this).css('cursor','pointer');
+}
+
+function changeCursorToAuto() {
+  $(this).css('cursor','auto');
+}
 </script>
 <?php
 
@@ -142,11 +150,14 @@ $showResultsWanted = isset( $reqSearchText );
 .current {
 	background: #FFFFDD;
 	font-weight: bold;
+  font-size: 150%;
+	text-decoration: none;
 }
 
 .noncurrent
 	{
 	background: #DDDDDD;
+	text-decoration: none;
 }
 -->
 </style><?php
@@ -335,6 +346,24 @@ function shortenURL( $url )
   return $url2;
 }
 
+function showTabs() {
+  
+  echo "<div id='data>\n";
+  
+  echo "<div class='nav'>\n";
+  echo "<span class='nav-one'   id='linki1'>Institutes&nbsp;</span>\n";
+  echo "<span class='nav-one'   id='linki2'>Institutes&nbsp;</span>\n";
+  echo "<span class='nav-two'   id='linke1'>Experts&nbsp;</span>\n";
+  echo "<span class='nav-two'   id='linke2'>Experts&nbsp;</span>\n";
+  echo "<span class='nav-three' id='linkr1'>Projects&nbsp;</span>\n";
+  echo "<span class='nav-three' id='linkr2'>Projects&nbsp;</span>\n";
+  echo "<span class='nav-four'  id='linku1'>Publications&nbsp;</span>\n";
+  echo "<span class='nav-four'  id='linku2'>Publications&nbsp;</span>\n";
+  echo "</div>\n";
+  
+  echo "<div class='list-wrap'>\n";
+}
+
 // ===================================================================
 // ===================================================================
 // ===================================================================
@@ -423,21 +452,8 @@ try
   // ----------------------------------------------------------------------
   // ----------------------------------------------------------------------
   
+  showTabs();
 
-  echo "<div id='data>\n";
-  
-  echo "<div class='nav'>\n";
-  echo "<span class='nav-one'   id='linki1'>Institutes</span>\n";
-  echo "<span class='nav-one'   id='linki2'><a href='#'>Institutes</a></span>\n";
-  echo "<span class='nav-two'   id='linke1'>Experts</span>\n";
-  echo "<span class='nav-two'   id='linke2'><a href='#'>Experts</a></span>\n";
-  echo "<span class='nav-three' id='linkr1'>Projects</span>\n";
-  echo "<span class='nav-three' id='linkr2'><a href='#'>Projects</a></span>\n";
-  echo "<span class='nav-four'  id='linku1'>Publications</span>\n";
-  echo "<span class='nav-four'  id='linku2'><a href='#'>Publications</a></span>\n";
-  echo "</div>\n";
-  
-  echo "<div class='list-wrap'>\n";
   
   // ----------------------------------------------------------------------
   // ----------------------------------------------------------------------
@@ -685,6 +701,15 @@ $( "#linki2" ).click( function() { showTab( "i" )} );
 $( "#linke2" ).click( function() { showTab( "e" )} );
 $( "#linkr2" ).click( function() { showTab( "r" )} );
 $( "#linku2" ).click( function() { showTab( "u" )} );
+
+$( "#linki1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linki2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linke1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linke2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linkr1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linkr2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linku1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+$( "#linku2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
 
 showTab( "<?php echo $kind; ?>" );
 </script>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Seek">
+		<message>Seek (243)</message>
+	</layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field name="kind" type="list" label="Show data areas"
+				description="Seek request parameter: kind" default="a">
+				<option value="a">All</option>
+				<option value="i">Institutes only</option>
+				<option value="e">Experts only</option>
+				<option value="r">Projects only</option>
+				<option value="u">Publications only</option>
+			</field>
+			<field name="tab" type="list" label="Select tab which has focus"
+				description="Seek request parameter: kind" default="i">
+				<option value="i">Institutes</option>
+				<option value="e">Experts</option>
+				<option value="r">Projects</option>
+				<option value="u">Publications</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

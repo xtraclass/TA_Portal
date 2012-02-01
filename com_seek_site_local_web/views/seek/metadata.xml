@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="Seek">
+		<message>
+      <![CDATA[Shows selected data.]]>
+		</message>
+	</view>
+	<params>
+		<param name="kind" type="text" size="1" default="A"
+			label="Kind of display"
+			description="Enter a for all, i for institutes, e for experts, u for publications, r for projects." />
+	</params>
+</metadata>

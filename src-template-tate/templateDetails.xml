@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="2.5" type="template">
+  <name>tate</name>
+  <creationDate>2012-02-02</creationDate>
+  <author>Thomas Eichberger</author>
+  <authorEmail>thomas.eichberger@gmail.com</authorEmail>
+  <copyright>Thomas Eichberger 2012</copyright>
+  <license>GNU/GPL</license>
+  <version>1.0</version>
+  <description>TA Portal Template</description>
+  <files>
+    <filename>index.php</filename>
+    <filename>templateDetails.xml</filename>
+    <folder>images</folder>
+    <folder>css</folder>
+  </files>
+  <positions>
+    <position>left</position>
+    <position>right</position>
+    <position>top</position>
+    <position>footer</position>
+  </positions>
+</extension>

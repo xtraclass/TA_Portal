@@ -59,7 +59,7 @@
 	<config>
 		<fieldset name="params">
 			<field name="kind" type="text" default="a" label="Kind of display"
-				description="Enter a for all, i for institutes, e for experts, u for publications, r for projects."
+				description="Enter a for all, i for institutes, e for experts, u for publications, r for projects, n for none of them (but search form)."
 				size="3"></field>
 		</fieldset>
 	</config>

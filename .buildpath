@@ -6,6 +6,7 @@
 	<buildpathentry kind="src" path="com_seek_admin_local_web"/>
 	<buildpathentry kind="src" path="src-taportal-web"/>
 	<buildpathentry kind="src" path="joomla-lib"/>
-	<buildpathentry kind="con" path="org.zend.php.framework.CONTAINER"/>
 	<buildpathentry kind="src" path="com_seek_site_local_web"/>
+	<buildpathentry kind="con" path="org.zend.php.framework.CONTAINER"/>
+	<buildpathentry kind="src" path="src-template-tate"/>
 </buildpath>

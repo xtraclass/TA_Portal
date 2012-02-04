@@ -1,0 +1,175 @@
+﻿/*********************************************
+*** Designed by Juergen Koller			   ***
+*** Designers Home: http://www.LernVid.com ***
+**********************************************/
+
+/****************** Styles for IE6 and IE5.5 ******************/
+
+body { font-size: 13px; }
+
+
+/** centering wrapper **/
+body { 
+	text-align: center; 
+}
+#wrapper, #foot_container {
+	text-align: left; 
+	width:980px;
+}
+/** centering wrapper end **/
+
+#header {
+	height:120px;
+	width:100%;
+	margin:0;
+}
+#footer {
+	margin:0;
+}
+/* disable transparent png's */
+body,
+#header, #subhead, #footer, 
+#wrapper #leftcol h3.moduleh3, #wrapper #rightcol h3.moduleh3, .module h3.module,
+#topmenu ul.menu, #topmenu ul.menu li a,
+#maincontent, .shadow-left, .shadow-right,
+table.gray th, table.blue th, table.red th, table.yellow th, table.white th,
+table.gray td, table.blue td, table.red td, table.yellow td, table.white td,
+p.readmore, #toppanel {
+	background-image:none;
+}
+
+#logo {
+	height:auto;
+	width: auto;
+}
+#banner_outer {
+	float:right;
+	width: 480px;
+}
+#banner {
+	width:auto;
+	height:73px;
+	margin:5px 5px 5px 0;;
+}
+.heckl, .heckr, .feckl, .feckr, .h3eckl, .h3eckr {  
+	border:0;
+	display:none;
+}
+
+
+#subhead{
+	height:40px;
+	margin: 10px 0 10px 0;
+	padding:0;
+}
+#breadcrumb {
+	width: 550px;
+}
+
+#content_outmiddle {
+	display: inline-block;
+	margin:0 0 0 8px;
+}
+#content_outleft {
+	display: inline-block;
+}
+#content_outright {
+	display: inline-block;
+}
+#maincontent {
+	width:auto;
+	overflow:auto;
+}
+#copy {
+	width: 100%;
+}
+.item {
+	overflow:hidden;
+}
+#leftcol .module, #leftcol .module_menu, #leftcol .module_text,
+#leftcol .module div.lvround-inner, #leftcol .module_menu div.lvround-inner, #leftcol .module_text div.lvround-inner,
+#leftcol .module div div div div, #leftcol .module_menu div div div div, #leftcol .module_text div div div div,
+#rightcol .module, #rightcol .module_menu, #rightcol .module_text,
+#rightcol .module div.lvround-inner, #rightcol .module_menu div.lvround-inner, #rightcol .module_text div.lvround-inner,
+#rightcol .module div div div div, #rightcol .module_menu div div div div, #rightcol .module_text div div div div {
+	overflow:auto;
+}
+
+#leftcol .module div div div, #leftcol .module_menu div div div, #leftcol .module_text div div div, 
+#rightcol .module div div div, #rightcol .module_menu div div div, #rightcol .module_text div div div {
+	width:auto;
+}
+#sidepanel-outer {
+	width:200px;
+	position:absolute;
+}
+
+#container {
+	margin:0;
+	padding: 10px 0 0 0;
+}
+#wrapper #leftcol h3.moduleh3 {
+	margin: 10px 0 0 0;
+	height:35px;
+	line-height:35px;
+}
+#wrapper #rightcol h3.moduleh3 {
+	margin: 10px 0 0 0;
+	height:35px;
+	line-height:35px;
+}
+.module_menu ul.menu li a, .module_menu ul.menu li span.separator {
+	height : 25px;
+}
+div.contenthead, div.contenthead-dark, div.contenthead-blue, div.contenthead-red, div.contenthead-green {
+	float:left;
+	width: 100%;
+}
+.createdate, .createdby, .modifydate {
+	font-size : 10px;
+}
+
+
+
+/* Global Modules */
+#beforehead1, #beforehead2, #beforehead3,
+#afterhead1, #afterhead2, #afterhead3,
+#top1, #top2, #top3,
+#advert1, #advert2, #advert3,
+#advert7, #advert8, #advert9,
+#bottom1, #bottom2, #bottom3,
+#foot1, #foot2, #foot3  {
+	width: 29.8%;
+}
+#beforehead4, #beforehead5,
+#afterhead4, #afterhead5,
+#top4, #top5,
+#advert4, #advert5,
+#advert10, #advert11,
+#bottom4, #bottom5,
+#foot4, #foot5 {
+	width: 46.5%;
+}
+#beforehead6, #afterhead6, #top6, #advert6,
+#advert12, #bottom6, #foot6 {
+	width: 95.5%;
+}
+
+div.module-style1 {
+	background-color:#eee;
+}
+
+div.module, div.module div, 
+div.module div div, div.module div div div,
+div.module-style2  {
+	width: auto;
+	background-image:none;
+}
+
+#topmenu ul.menu li ul a {
+	width:210px;
+}
+#simpleTooltip { 
+	text-align:left; 
+}
+

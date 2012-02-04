@@ -12,6 +12,7 @@
 				<option value="e">Experts only</option>
 				<option value="r">Projects only</option>
 				<option value="u">Publications only</option>
+				<option value="n">No data (only search form)</option>
 			</field>
 			<field name="tab" type="list" label="Select tab which has focus"
 				description="Seek request parameter: kind" default="i">

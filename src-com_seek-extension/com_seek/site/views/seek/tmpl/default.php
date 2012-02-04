@@ -1,18 +1,17 @@
-<link rel="stylesheet" href="organictabs.css">
 <script
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
 <script>
 
 function showTab( which ) {
 
-	$( "#linki1" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linke1" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linkr1" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linku1" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linke2" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linki2" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linkr2" ).hide().removeClass( "current").addClass( "noncurrent").hide();
-	$( "#linku2" ).hide().removeClass( "current").addClass( "noncurrent").hide();
+	$( "#linki1" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linke1" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linkr1" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linku1" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linke2" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linki2" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linkr2" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
+	$( "#linku2" ).hide().removeClass( "currenttab").addClass( "noncurrenttab").hide();
   	
 	$( "#divi" ).hide();
 	$( "#dive" ).hide();
@@ -25,7 +24,7 @@ function showTab( which ) {
   $( "#linku2" ).show();
   
 	$( "#link" + which + "2").hide();
-	$( "#link" + which + "1").removeClass( "noncurrent").addClass( "current").show();
+	$( "#link" + which + "1").removeClass( "noncurrenttab").addClass( "currenttab").show();
 
 	$( "#div" + which ).fadeIn();
 }
@@ -42,6 +41,7 @@ function changeCursorToAuto() {
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once 'taportal/harvester/_Classes.php';
+jimport('joomla.application.module.helper');
 
 $reqSearchText = $_GET[ 'x' ];
 if ( isset( $reqSearchText ) )
@@ -134,18 +134,40 @@ $showResultsWanted = isset( $reqSearchText );
 	text-decoration: none;
 }
 
-.current {
+.currenttab {
 	background: #FFFFDD;
 	font-weight: bold;
   font-size: 150%;
 	text-decoration: none;
 }
 
-.noncurrent
+.noncurrenttab
 	{
 	background: #DDDDDD;
 	text-decoration: none;
 }
+
+.datasearchform {
+
+	  margin-top: 0.5em;
+	  margin-bottom: 2em;
+    padding-left: 2em;
+
+    padding-top: 0.3em;
+    padding-bottom: 0.1em;
+
+    width: 30em;
+
+    background: -moz-linear-gradient(left, #286e9c, #FFFFFF);
+    background: -webkit-gradient(linear, left top, right top, from(#286e9c), to(#FFFFFF));
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#286e9c', EndColorStr='#FFFFFF', GradientType=1);
+}
+
+.nav {
+	  padding-top: 0.3em;
+	  padding-bottom: 0.2em;
+}
+
 -->
 </style><?php
 
@@ -343,33 +365,10 @@ try
 {
   $prefix = $_SERVER[ 'SERVER_NAME' ] == 'localhost' ? '/joomla' : '';
   
-  // ===================================================================
-  
-
-  echo "<blockquote>\n";
-  
-  echo "<form name='search_form' action='" . JRoute::_('index.php?option=com_seek') . "' method='get'>\n";
-  echo "<input type='text' name='x' value='$reqSearchText' size='30' class='input ' />\n";
-  echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
-  echo "<input type='submit' value='Submit' class='button'/>\n";
-  //echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
-  //echo "<input type='reset' value='Clear' class='button'/>\n";
-  echo "</form>\n";
-  echo "<br><br>\n";
-  
-  echo "</blockquote>\n\n\n";
-  
-  $institutes = $this->institutes->search( $reqSearchText );
-  $experts = $this->experts->search( $reqSearchText );
-  $projects = $this->projects->search( $reqSearchText );
-  $publications = $this->publications->search( $reqSearchText );
-  
-  if ( $institutes->isEmpty() and $experts->isEmpty() and $projects->isEmpty() and $publications->isEmpty() )
-  {
-    echo "<p>No data found.\n";
-  }
   
   // ----------------------------------------------------------------------
+  $showResultsAndTabs = TRUE;
+  
   $kind = $_GET[ 'kind' ];
   if ( is_null( $kind ) or $kind == '' )
   {
@@ -407,6 +406,15 @@ try
     $showR = FALSE;
     $showU = TRUE;
   }
+  else if ( $kind == 'n' )
+  {
+    $kind = 'i';
+    $showI = FALSE;
+    $showE = FALSE;
+    $showR = FALSE;
+    $showU = FALSE;
+    $showResultsAndTabs = FALSE;
+  }
   else
   {
     $kind = 'a';
@@ -417,43 +425,133 @@ try
   }
   
   
+  
   $tab = $_GET[ 'tab' ];
   if ( is_null( $tab ) or $tab == '' or  !( $tab === 'i' or $tab === 'e' or $tab === 'r' or $tab === 'u' ) )
   {
     $tab = 'i';
   }
-  
-  // ----------------------------------------------------------------------
-  // ----------------------------------------------------------------------
-  // ----------------------------------------------------------------------
-  
-  echo "<div id='data>\n";
-  
-  echo "<div class='nav'>\n";
-  if ( $showI )
-  {
-    echo "<span class='nav-one'   id='linki1'>Institutes&nbsp;</span>\n";
-    echo "<span class='nav-one'   id='linki2'>Institutes&nbsp;</span>\n";
-  }
-  if ( $showE )
-  {
-    echo "<span class='nav-two'   id='linke1'>Experts&nbsp;</span>\n";
-    echo "<span class='nav-two'   id='linke2'>Experts&nbsp;</span>\n";
-  }
-  if ( $showR )
-  {
-    echo "<span class='nav-three' id='linkr1'>Projects&nbsp;</span>\n";
-    echo "<span class='nav-three' id='linkr2'>Projects&nbsp;</span>\n";
-  }
-  if ( $showU )
-  {
-    echo "<span class='nav-four'  id='linku1'>Publications&nbsp;</span>\n";
-    echo "<span class='nav-four'  id='linku2'>Publications&nbsp;</span>\n";
-  }
-  echo "</div>\n";
-  
-  echo "<div class='list-wrap'>\n";
 
+
+  
+  
+  
+  
+  // ===================================================================
+  
+  if ( ! $showResultsAndTabs ) 
+  {
+    echo "<div class='datasearchform' >\n";
+    echo "<p>\n";
+    echo "Welcome to the TA Portal which offers you the central point of access \n";
+    echo "for various kind information about technical assessments.\n";
+    echo "</div>\n";
+  }
+  
+  
+
+  echo "<div class='datasearchform'>\n";
+  
+  echo "<form name='search_form' action='" . JRoute::_('index.php?option=com_seek') . "' method='get'>\n";
+  echo "<input type='text' name='x' id='searchField' value='$reqSearchText' size='30' class='input ' />\n";
+  echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
+  echo "<input type='submit' value='Search' class='button'/>\n";
+  //echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
+  //echo "<input type='reset' value='Clear' class='button'/>\n";
+  echo "</form>\n";
+  
+  echo "</div>\n\n\n";
+  
+  $institutes = $this->institutes->search( $reqSearchText );
+  $experts = $this->experts->search( $reqSearchText );
+  $projects = $this->projects->search( $reqSearchText );
+  $publications = $this->publications->search( $reqSearchText );
+  
+  if ( $institutes->isEmpty() and $experts->isEmpty() and $projects->isEmpty() and $publications->isEmpty() )
+  {
+    echo "<p>No data found.\n";
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  // ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+  
+  if ( $showResultsAndTabs )
+  {
+    if ( $institutes->size() == 1 )
+    {
+      $institutesText = 'Institute (1)';
+    }
+    else 
+    {
+      $institutesText = ' Institutes (' . $institutes->size() . ')';
+    }
+    
+    if ( $experts->size() == 1 )
+    {
+      $expertsText = 'Expert (1)';
+    }
+    else 
+    {
+      $expertsText = ' Experts (' . $experts->size() . ')';
+    }
+    
+    if ( $projects->size() == 1 )
+    {
+      $projectsText = 'Project (1)';
+    }
+    else 
+    {
+      $projectsText = ' Projects (' . $projects->size() . ')';
+    }
+    
+    if ( $publications->size() == 1 )
+    {
+      $publicationsText = 'Publication (1)';
+    }
+    else 
+    {
+      $publicationsText = ' Publications (' . $publications->size() . ')';
+    }
+  }
+  
+  
+  echo "<div id='data'>\n";
+  
+  if ( $showResultsAndTabs )
+  {
+    echo "<div class='nav'>\n";
+    if ( $showI )
+    {
+      echo "<span class='nav-one'   id='linki1'>&nbsp;&nbsp;{$institutesText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-one'   id='linki2'>&nbsp;&nbsp;{$institutesText}&nbsp;&nbsp;&nbsp;</span>\n";
+    }
+    if ( $showE )
+    {
+      echo "<span class='nav-two'   id='linke1'>&nbsp;&nbsp;{$expertsText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-two'   id='linke2'>&nbsp;&nbsp;{$expertsText}&nbsp;&nbsp;&nbsp;</span>\n";
+    }
+    if ( $showR )
+    {
+      echo "<span class='nav-three' id='linkr1'>&nbsp;&nbsp;{$projectsText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-three' id='linkr2'>&nbsp;&nbsp;{$projectsText}&nbsp;&nbsp;&nbsp;</span>\n";
+    }
+    if ( $showU )
+    {
+      echo "<span class='nav-four'  id='linku1'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-four'  id='linku2'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>\n";
+    }
+    echo "</div>\n"; // nav
+    
+    echo "<div class='list-wrap'>\n";
+  }
   
   
   
@@ -467,19 +565,6 @@ try
   {
     echo "<div id='divi'>\n";
     echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
-    
-    if ( $institutes->size() >= 2 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='5'>" . $institutes->size() . " institutes</td>";
-      echo "</tr>";
-    }
-    else if ( $institutes->size() == 1 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='5'>1 institute</td>";
-      echo "</tr>";
-    }
     
     if ( $institutes->size() >= 1 )
     {
@@ -520,19 +605,6 @@ try
   {
     echo "<div id='dive'>\n";
     echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
-    
-    if ( $experts->size() >= 2 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='7'>" . $experts->size() . " experts</td>";
-      echo "</tr>";
-    }
-    else if ( $experts->size() == 1 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='7'>1 expert</td>";
-      echo "</tr>";
-    }
     
     if ( $experts->size() >= 1 )
     {
@@ -581,19 +653,6 @@ try
     echo "<div id='divr'>\n";
     echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
     
-    if ( $projects->size() >= 2 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='6'>" . $projects->size() . " projects</td>";
-      echo "</tr>";
-    }
-    else if ( $projects->size() == 1 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='6'>1 project</td>";
-      echo "</tr>";
-    }
-    
     if ( $projects->size() >= 1 )
     {
       echo "<tr class='seektrlabels'>";
@@ -639,19 +698,6 @@ try
     echo "<div id='divu'>\n";
     echo "<table class='seektable' border='0' cellpadding='1' cellspacing='1' width='100%'>\n";
     
-    if ( $publications->size() >= 2 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='3'>" . $publications->size() . " publications</td>";
-      echo "</tr>";
-    }
-    else if ( $publications->size() == 1 )
-    {
-      echo "<tr class='seektr'>";
-      echo "<td class='seektdhead' colspan='3'>1 publication</td>";
-      echo "</tr>";
-    }
-    
     if ( $publications->size() >= 1 )
     {
       echo "<tr class='seektrlabels'>";
@@ -694,26 +740,34 @@ catch ( Exception $x )
 }
 
 
+if ( $showResultsAndTabs )
+{
+  ?><script>
+  
+  $( "#linki1" ).click( function() { showTab( "i" )} );
+  $( "#linke1" ).click( function() { showTab( "e" )} );
+  $( "#linkr1" ).click( function() { showTab( "r" )} );
+  $( "#linku1" ).click( function() { showTab( "u" )} );
+  $( "#linki2" ).click( function() { showTab( "i" )} );
+  $( "#linke2" ).click( function() { showTab( "e" )} );
+  $( "#linkr2" ).click( function() { showTab( "r" )} );
+  $( "#linku2" ).click( function() { showTab( "u" )} );
+  
+  $( "#linki1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linki2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linke1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linke2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linkr1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linkr2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linku1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linku2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  
+  showTab( "<?php echo $tab; ?>" );
+  </script><?php
+}
 ?>
 <script>
 
-$( "#linki1" ).click( function() { showTab( "i" )} );
-$( "#linke1" ).click( function() { showTab( "e" )} );
-$( "#linkr1" ).click( function() { showTab( "r" )} );
-$( "#linku1" ).click( function() { showTab( "u" )} );
-$( "#linki2" ).click( function() { showTab( "i" )} );
-$( "#linke2" ).click( function() { showTab( "e" )} );
-$( "#linkr2" ).click( function() { showTab( "r" )} );
-$( "#linku2" ).click( function() { showTab( "u" )} );
+setTimeout( function() { $('#searchField').focus(); }, 500 );
 
-$( "#linki1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linki2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linke1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linke2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linkr1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linkr2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linku1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-$( "#linku2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-
-showTab( "<?php echo $tab; ?>" );
 </script>

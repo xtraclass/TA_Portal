@@ -441,7 +441,7 @@ try
   
   if ( ! $showResultsAndTabs ) 
   {
-    echo "<div class='datasearchform' >\n";
+    echo "<div>\n";
     echo "<p>\n";
     echo "Welcome to the TA Portal which offers you the central point of access \n";
     echo "for various kind information about technical assessments.\n";
@@ -467,10 +467,6 @@ try
   $projects = $this->projects->search( $reqSearchText );
   $publications = $this->publications->search( $reqSearchText );
   
-  if ( $institutes->isEmpty() and $experts->isEmpty() and $projects->isEmpty() and $publications->isEmpty() )
-  {
-    echo "<p>No data found.\n";
-  }
   
   
   
@@ -549,8 +545,6 @@ try
       echo "<span class='nav-four'  id='linku2'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>\n";
     }
     echo "</div>\n"; // nav
-    
-    echo "<div class='list-wrap'>\n";
   }
   
   
@@ -729,7 +723,6 @@ try
     echo "</div>\n";
   }
   
-  echo "</div>\n"; // list-wrap
   echo "</div>\n"; // data
 
 

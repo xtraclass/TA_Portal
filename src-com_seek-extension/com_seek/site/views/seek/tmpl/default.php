@@ -442,9 +442,11 @@ try
   if ( ! $showResultsAndTabs ) 
   {
     echo "<div>\n";
-    echo "<p>\n";
-    echo "Welcome to the TA Portal which offers you the central point of access \n";
-    echo "for various kind information about technical assessments.\n";
+    echo "<p><span style='color: #009aca; font-size: 1.4em;'>Welcome to TA Portal!</span>\n";
+    echo "<p><b>TA Portal</b> is the first platform which will function "
+    ."as <span style='color: #009aca; font-weight: bold;'>the central TA information and training portal in Europe</span>."
+    ."<p><b>TA Portal</b> is an important reference for providing information "
+    ."about TA activities in Europe and also the European training system.<br><br>\n";
     echo "</div>\n";
   }
   

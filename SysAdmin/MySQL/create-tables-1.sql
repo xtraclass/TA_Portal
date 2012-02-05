@@ -4,7 +4,7 @@ create table joomla_institute (
   id integer not null auto_increment,
   
   abbreviation varchar(10) not null,
-  name varchar(250) not null,
+  name varchar(51) not null,
   countrycode varchar(2),
   zipcode varchar(10),
   city varchar(40),
@@ -23,11 +23,9 @@ create index x_institute_nam on joomla_institute ( name );
 create index x_institute_cou on joomla_institute ( countrycode );
 
 insert into joomla_institute ( abbreviation, name, countrycode, harvesterurl, forharvest ) 
-values ( 'ITA',  'Institut für Technikfolgen-Abschätzung',  'AT', 'http://technology-assessment.info/run/json/sample', 1 );
-
+values ( 'TAPortal',  'JSON-Sample',  'AT', 'http://technology-assessment.info/run/json/sample', 1 );
 insert into joomla_institute ( abbreviation, name, countrycode, harvesterurl, forharvest ) 
-values ( 'ITAS', 'Institute for Technology Assessment and Systems Analysis', 'DE', 'http://technology-assessment.info/run/json/sample2', 1 );
-
+values ( 'TAPortal2', 'JSON-Sample2', 'AT', 'http://technology-assessment.info/run/json/sample2', 1 );
 select * from joomla_institute;
 
 
@@ -60,12 +58,7 @@ create index x_expert_sur on joomla_expert ( surname );
 create index x_expert_fir on joomla_expert ( firstnames );
 create index x_expert_fkins on joomla_expert ( fkinstitute );
 
-insert into joomla_expert ( surname, firstnames, email, phonenumber, expertise, emplurl, fkinstitute ) 
-values ( 'Gazso', 'Andre', 'agazso@oeaw.ac.at', '(+43-1-)51581-6578 ', 'Nanotechnologies,Risikomanagement,Risikoforschung,Converging Technologies', 'http://www.oeaw.ac.at/ita/ebene3/e2-4a.htm#AG', 1 );
-
-insert into joomla_expert ( surname, firstnames, email, phonenumber, expertise, emplurl, fkinstitute ) 
-values ( 'Fleischer', 'Torsten', 'torsten fleischer@kit edu', '0721 608-24571', 'Nanotechnologie, Energie, Verkehr', 'http://www.itas.kit.edu/mitarbeiter_fleischer_torsten.php', 2 );
-
+insert into joomla_expert ( surname, firstnames, fkinstitute ) values ( 'Meier', 'Anton', 1 );
 select * from joomla_expert;
 
 
@@ -105,12 +98,7 @@ create index x_project_std on joomla_project ( startdate );
 create index x_project_end on joomla_project ( enddate );
 create index x_project_fkcon on joomla_project ( fkcontactperson );
 
-insert into joomla_project ( shorttitle, startdate, enddate, partnercountries, homepage, fkcontactperson ) 
-values ( 'NanoTrust', '2007-10', '2010-09', 'EU', 'http://nanotrust.ac.at', 1 );
-
-insert into joomla_project ( shorttitle, startdate, partnercountries, homepage, fkcontactperson ) 
-values ( 'Risiko-Governance', '2010', '2014', 'EU', 'http://www.itas.kit.edu/projekte_flei10_parna.php', 2 );
-
+insert into joomla_project ( shorttitle, longtitle, startdate, partnercountries, fkcontactperson ) values ( 'Proj1', 'Project1', '2000-07-01', 'EU', 1 );
 select * from joomla_project;
 
 
@@ -142,15 +130,7 @@ create index x_publication_pud on joomla_publication ( publdate );
 create index x_publication_put on joomla_publication ( publtype );
 create index x_publication_fkins on joomla_publication ( fkinstitute );
 
-insert into joomla_publication ( quotation, publdate, publtype, fkinstitute ) 
-values ( 'Fleischer, T., Nano-Produktregister als ein Beitrag zur Risiko-Governance von Nanomaterialien? Vortrag auf dem 5. Internationalen Nano-Behördendialog. Berlin, 03.-04.05.2011', '2011', 'presentation', 2 );
-
-insert into joomla_publication ( quotation, publdate, publtype, fkinstitute ) 
-values ( 'Gazsó, A.; Hauser, Chr.; Kaiser, M. (2012) Regulating Nanotechnologies By Dialogue. The European Journal of Risk Regulation (EJRR) (2/2012)', '2012', 'article', 1 );
-
-insert into joomla_publication ( quotation, publdate, publtype, fkinstitute ) 
-values ( 'Gazsó, A.; Greßler, S.; Schiemer, F. (Hrsg.) (2007) nano - Chancen und Risiken aktueller Technologien.; Wien: Springer (246 Seiten).www.springer.com/materials/nanotechnology/book/978-3-211-48644-3', '2007', 'book', 1 );
-
+insert into joomla_publication ( quotation, shortdescription, publdate, publtype, fkinstitute ) values ( 'Publ1', 'publ publ publ', '2000-07-01', 'article', 1 );
 select * from joomla_publication;
 
 

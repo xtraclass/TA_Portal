@@ -22,11 +22,11 @@ create index x_institute_abb on joomla_institute ( abbreviation );
 create index x_institute_nam on joomla_institute ( name );
 create index x_institute_cou on joomla_institute ( countrycode );
 
-insert into joomla_institute ( abbreviation, name, countrycode, harvesterurl, forharvest ) 
-values ( 'ITA',  'Institut für Technikfolgen-Abschätzung',  'AT', 'http://technology-assessment.info/run/json/sample', 1 );
+insert into joomla_institute ( abbreviation, name, url, countrycode, harvesterurl, forharvest ) 
+values ( 'ITA',  'Institute of Technology Assessment', 'http://www.oeaw.ac.at/ita',  'AT', 'http://technology-assessment.info/run/json/sample', 1 );
 
-insert into joomla_institute ( abbreviation, name, countrycode, harvesterurl, forharvest ) 
-values ( 'ITAS', 'Institute for Technology Assessment and Systems Analysis', 'DE', 'http://technology-assessment.info/run/json/sample2', 1 );
+insert into joomla_institute ( abbreviation, name, url, countrycode, harvesterurl, forharvest ) 
+values ( 'ITAS', 'Institute for Technology Assessment and Systems Analysis', 'http://www.itas.kit.edu/english/', 'DE', 'http://technology-assessment.info/run/json/sample2', 1 );
 
 select * from joomla_institute;
 
@@ -106,10 +106,10 @@ create index x_project_end on joomla_project ( enddate );
 create index x_project_fkcon on joomla_project ( fkcontactperson );
 
 insert into joomla_project ( shorttitle, startdate, enddate, partnercountries, homepage, fkcontactperson ) 
-values ( 'NanoTrust', '2007-10', '2010-09', 'EU', 'http://nanotrust.ac.at', 1 );
+values ( 'NanoTrust', '2007-10-01', '2010-09-01', 'EU', 'http://nanotrust.ac.at', 1 );
 
 insert into joomla_project ( shorttitle, startdate, partnercountries, homepage, fkcontactperson ) 
-values ( 'Risiko-Governance', '2010', '2014', 'EU', 'http://www.itas.kit.edu/projekte_flei10_parna.php', 2 );
+values ( 'Risiko-Governance', '2010-05-05', 'EU', 'http://www.itas.kit.edu/projekte_flei10_parna.php', 2 );
 
 select * from joomla_project;
 

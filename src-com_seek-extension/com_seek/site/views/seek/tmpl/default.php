@@ -335,8 +335,7 @@ function url( $url )
 
 function shortenURL( $url )
 {
-  $pos = strpos( $url, "
-  http: //" );
+  $pos = strpos( $url, "http://" );
   if ( $pos === 0 )
   {
     $url2 = substr( $url, 7 );

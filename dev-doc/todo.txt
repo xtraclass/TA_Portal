@@ -1,4 +1,9 @@
+Fehlende Daten
+Suche im Baum
+
+
 publ data in DB als yyyy or full date
+project start date sql monat geht nicht, nur mit tag
 author of publication
 Tabs optisch schöner
 Resultlist optisch schöner

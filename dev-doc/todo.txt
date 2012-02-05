@@ -1,6 +1,7 @@
-Harvester importiert country code mit Länge 1
-+Harvester speichert endddate falsch
-+Harvester 6 institutes
+publ data in DB als yyyy or full date
+author of publication
+
+
 
 
 

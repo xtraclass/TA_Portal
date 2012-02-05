@@ -143,13 +143,13 @@ create index x_publication_put on joomla_publication ( publtype );
 create index x_publication_fkins on joomla_publication ( fkinstitute );
 
 insert into joomla_publication ( quotation, publdate, publtype, fkinstitute ) 
-values ( 'Fleischer, T., Nano-Produktregister als ein Beitrag zur Risiko-Governance von Nanomaterialien? Vortrag auf dem 5. Internationalen Nano-Behördendialog. Berlin, 03.-04.05.2011', '2011', 'presentation', 2 );
+values ( 'Fleischer, T., Nano-Produktregister als ein Beitrag zur Risiko-Governance von Nanomaterialien? Vortrag auf dem 5. Internationalen Nano-Behördendialog. Berlin, 03.-04.05.2011', '2011-04-02', 'presentation', 2 );
 
 insert into joomla_publication ( quotation, publdate, publtype, fkinstitute ) 
-values ( 'Gazsó, A.; Hauser, Chr.; Kaiser, M. (2012) Regulating Nanotechnologies By Dialogue. The European Journal of Risk Regulation (EJRR) (2/2012)', '2012', 'article', 1 );
+values ( 'Gazsó, A.; Hauser, Chr.; Kaiser, M. (2012) Regulating Nanotechnologies By Dialogue. The European Journal of Risk Regulation (EJRR) (2/2012)', '2012-01-25', 'article', 1 );
 
 insert into joomla_publication ( quotation, publdate, publtype, fkinstitute ) 
-values ( 'Gazsó, A.; Greßler, S.; Schiemer, F. (Hrsg.) (2007) nano - Chancen und Risiken aktueller Technologien.; Wien: Springer (246 Seiten).www.springer.com/materials/nanotechnology/book/978-3-211-48644-3', '2007', 'book', 1 );
+values ( 'Gazsó, A.; Greßler, S.; Schiemer, F. (Hrsg.) (2007) nano - Chancen und Risiken aktueller Technologien.; Wien: Springer (246 Seiten).www.springer.com/materials/nanotechnology/book/978-3-211-48644-3', '2007-06-26', 'book', 1 );
 
 select * from joomla_publication;
 

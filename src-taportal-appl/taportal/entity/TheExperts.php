@@ -53,11 +53,11 @@ final class TheExperts extends Vector
     for( $i = 0; $i < $this->size(); $i++ )
     {
       $pro = $this->get( $i )->getProjects();
-      for( $i = 0; $i < count( $pro ); $i++ )
+      for( $j = 0; $j < $pro->size(); $j++ )
       {
         if ( isset( $pro ) )
         {
-          $all[] = $pro->get( $i );
+          $all[] = $pro->get( $j );
         }
       }
     }

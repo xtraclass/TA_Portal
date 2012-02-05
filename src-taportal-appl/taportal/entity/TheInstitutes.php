@@ -53,11 +53,11 @@ final class TheInstitutes extends Vector
     for( $i = 0; $i < $this->size(); $i++ )
     {
       $exp = $this->get( $i )->getExperts();
-      for( $i = 0; $i < count( $exp ); $i++ )
+      for( $j = 0; $j < $exp->size(); $j++ )
       {
         if ( isset( $exp ) )
         {
-          $all[] = $exp->get( $i );
+          $all[] = $exp->get( $j );
         }
       }
     }
@@ -74,11 +74,11 @@ final class TheInstitutes extends Vector
     for( $i = 0; $i < $this->size(); $i++ )
     {
       $pub = $this->get( $i )->getPublications();
-      for( $i = 0; $i < count( $pub ); $i++ )
+      for( $j = 0; $j < $pub->size(); $j++ )
       {
         if ( isset( $pub ) )
         {
-          $all[] = $pub->get( $i );
+          $all[] = $pub->get( $j );
         }
       }
     }

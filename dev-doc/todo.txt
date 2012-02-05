@@ -1,6 +1,7 @@
 publ data in DB als yyyy or full date
 author of publication
-
+Tabs optisch schöner
+Resultlist optisch schöner
 
 
 

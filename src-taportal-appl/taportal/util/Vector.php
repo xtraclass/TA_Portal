@@ -29,6 +29,48 @@ class Vector
     
     return TRUE;
   }
+  
+  
+  
+  /**
+   * This adds all elements of the given array 
+   * to this object. Returns TRUE if at least one element was added.
+   */
+  public final function addAllOfArray( $array )
+  {
+    if ( is_null( $array ) or count( $array ) == 0 )
+    {
+      return FALSE;
+    }
+    
+    for ( $i = 0; $i < count( $array ); $i++ )
+    {
+      $this->add( $array[ $i ] );
+    }
+    
+    return TRUE;
+  }
+  
+  
+  
+  /**
+   * This adds all elements of the given vector 
+   * to this object. Returns TRUE if at least one element was added.
+   */
+  public final function addAllOfVector( Vector $vector )
+  {
+    if ( is_null( $vector ) or $vector->isEmpty() )
+    {
+      return FALSE;
+    }
+    
+    for ( $i = 0; $i < $vector->getSize(); $i++ )
+    {
+      $this->add( $vector->get( $i ) );
+    }
+    
+    return TRUE;
+  }
 
 
 

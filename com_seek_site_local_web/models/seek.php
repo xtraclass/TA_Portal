@@ -110,11 +110,17 @@ class SeekModelSeek extends JModelItem
       $this->readData();
     }
     
-    return array( /***/
-    $this->institutes->search( $lookFor ), /***/
-    $this->experts->search( $lookFor ), /***/
-    $this->projects->search( $lookFor ), /***/
-    $this->publications->search( $lookFor ) );
+    $ins = $this->institutes->search( $lookFor );
+    $exp = $this->experts->search( $lookFor );
+    $pro = $this->projects->search( $lookFor );
+    $pub = $this->publications->search( $lookFor );
+
+//    $exp->addAll( $ins->getAllExperts() );
+//    $pub->addAll( $ins->getAllPublications() );
+//    
+//    $pro->addAll( $exp->getAllProjects() );
+    
+    return array( $ins, $exp, $pro, $pub );
   }
 
 

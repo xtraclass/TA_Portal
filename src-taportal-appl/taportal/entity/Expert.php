@@ -325,7 +325,7 @@ class Expert extends EntityBase
   {
     return array( $this->Surname, $this->Firstnames, $this->ExpTitle, $this->EMail, $this->PhoneNumber, $this->SkypeID, $this->Expertise, $this->EmplURL, $this->TAPublicationURL, $this->TAProjectURL );
   }
-
+  
 
 
   public function __toString()

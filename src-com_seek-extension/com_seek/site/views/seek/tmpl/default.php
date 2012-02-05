@@ -197,10 +197,6 @@ function rowWithTableForInstitute( Institute $institute, $cols )
   makeDivTableForInstitute( $institute );
   
   echo "</td></tr>\n";
-  
-  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
-  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$columns}' border='0'>\n";
-  echo "</td></tr>\n";
 }
 
 
@@ -212,10 +208,6 @@ function rowWithTableForExpert( Expert $expert, $cols )
   
   makeDivTableForExpert( $expert );
   
-  echo "</td></tr>\n";
-  
-  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
-  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$cols}' border='0'>\n";
   echo "</td></tr>\n";
 }
 
@@ -468,6 +460,10 @@ try
   $projects = $this->projects->search( $reqSearchText );
   $publications = $this->publications->search( $reqSearchText );
   
+  $experts->addAllOfArray( $institutes->getAllExperts() );
+  $projects->addAllOfArray( $experts->getAllProjects() );
+  $publications->addAllOfArray( $institutes->getAllPublications() );
+  
   
   
   
@@ -679,6 +675,7 @@ try
         //echo "<td class='seektd'>" . expert( $x->getContactPerson() ) . "</td>";
         echo "</tr>\n";
         rowWithTableForExpert( $x->getContactPerson(), 6 );
+        rowWithTableForInstitute( $x->getContactPerson()->getInstitute(), 6 );
       }
     }
     echo "</table><br><br>\n";

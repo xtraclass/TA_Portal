@@ -44,6 +44,27 @@ final class TheExperts extends Vector
     return $found;
   }
 
+
+
+  public function getAllProjects()
+  {
+    $all = array();
+    
+    for( $i = 0; $i < $this->size(); $i++ )
+    {
+      $pro = $this->get( $i )->getProjects();
+      for( $i = 0; $i < count( $pro ); $i++ )
+      {
+        if ( isset( $pro ) )
+        {
+          $all[] = $pro->get( $i );
+        }
+      }
+    }
+    
+    return $all;
+  }
+
 }
 
 ?>

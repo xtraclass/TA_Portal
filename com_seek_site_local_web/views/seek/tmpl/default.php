@@ -198,10 +198,6 @@ function rowWithTableForInstitute( Institute $institute, $cols )
   makeDivTableForInstitute( $institute );
   
   echo "</td></tr>\n";
-  
-  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
-  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$columns}' border='0'>\n";
-  echo "</td></tr>\n";
 }
 
 
@@ -213,10 +209,6 @@ function rowWithTableForExpert( Expert $expert, $cols )
   
   makeDivTableForExpert( $expert );
   
-  echo "</td></tr>\n";
-  
-  echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
-  echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$cols}' border='0'>\n";
   echo "</td></tr>\n";
 }
 
@@ -587,7 +579,7 @@ try
           echo "<tr class='seektr2'>";
         else
           echo "<tr class='seektr'>";
-        echo "<td class='seektd'>" . t( $x->getAbbreviation() ) . "</td>";
+        echo "<td class='seektd'>" . $x->getExperts()->getSize() . ', ' . t( $x->getAbbreviation() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getName() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getCountryCode() ) . "</td>";
         echo "<td class='seektd'>" . t( $x->getDescription() ) . "</td>";

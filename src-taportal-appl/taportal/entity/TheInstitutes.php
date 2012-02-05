@@ -44,6 +44,48 @@ final class TheInstitutes extends Vector
     return $found;
   }
 
+
+
+  public function getAllExperts()
+  {
+    $all = array();
+    
+    for( $i = 0; $i < $this->size(); $i++ )
+    {
+      $exp = $this->get( $i )->getExperts();
+      for( $i = 0; $i < count( $exp ); $i++ )
+      {
+        if ( isset( $exp ) )
+        {
+          $all[] = $exp->get( $i );
+        }
+      }
+    }
+    
+    return $all;
+  }
+
+
+
+  public function getAllPublications()
+  {
+    $all = array();
+    
+    for( $i = 0; $i < $this->size(); $i++ )
+    {
+      $pub = $this->get( $i )->getPublications();
+      for( $i = 0; $i < count( $pub ); $i++ )
+      {
+        if ( isset( $pub ) )
+        {
+          $all[] = $pub->get( $i );
+        }
+      }
+    }
+    
+    return $all;
+  }
+
 }
 
 ?>

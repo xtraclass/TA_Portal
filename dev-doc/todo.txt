@@ -1,4 +1,3 @@
-Fehlende Daten
 Suche im Baum
 
 
@@ -7,7 +6,7 @@ project start date sql monat geht nicht, nur mit tag
 author of publication
 Tabs optisch schöner
 Resultlist optisch schöner
-
+search wird im model und in der view aufgerufen
 
 
 

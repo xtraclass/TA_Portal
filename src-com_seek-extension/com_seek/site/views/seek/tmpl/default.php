@@ -29,11 +29,11 @@ function showTab( which ) {
 	$( "#div" + which ).fadeIn();
 }
 
-function changeCursorToLink() {
-	$(this).css('cursor','pointer');
+function tabHovered() {
+	$(this).css('cursor','pointer').css( 'background-color', 'red' );
 }
 
-function changeCursorToAuto() {
+function tabUnHovered() {
   $(this).css('cursor','auto');
 }
 </script>
@@ -143,7 +143,12 @@ $showResultsWanted = isset( $reqSearchText );
 	font-weight: bold;
   font-size: 150%;
 	text-decoration: none;
-	padding: 5px;
+	padding: 0px;
+  spacing: 0px;
+	border-left:   1px solid #666666;
+	border-top:    1px solid #666666;
+	border-right:  1px solid #666666;
+  margin: 0;
 }
 
 .noncurrenttab
@@ -152,10 +157,13 @@ $showResultsWanted = isset( $reqSearchText );
 	color: #202020;
 	font-style: italic;
 	text-decoration: none;
-	padding: 5px;
+	padding: 0px;
+  spacing: 0px;
+	border-bottom: 1px solid #666666;	
+  margin: 0;
 }
 
-.noncurrenttab a:hover
+.noncurrenttabhover
 	{
 	font-style: normal;
 	font-weight: bold;
@@ -549,23 +557,23 @@ try
     echo "<div class='nav'>\n";
     if ( $showI )
     {
-      echo "<span class='nav-one'   id='linki1'>&nbsp;&nbsp;{$institutesText}&nbsp;&nbsp;&nbsp;</span>\n";
-      echo "<span class='nav-one'   id='linki2'>&nbsp;&nbsp;{$institutesText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-one'   id='linki1'>&nbsp;&nbsp;{$institutesText}&nbsp;&nbsp;&nbsp;</span>";
+      echo "<span class='nav-one'   id='linki2'>&nbsp;&nbsp;{$institutesText}&nbsp;&nbsp;&nbsp;</span>";
     }
     if ( $showE )
     {
-      echo "<span class='nav-two'   id='linke1'>&nbsp;&nbsp;{$expertsText}&nbsp;&nbsp;&nbsp;</span>\n";
-      echo "<span class='nav-two'   id='linke2'>&nbsp;&nbsp;{$expertsText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-two'   id='linke1'>&nbsp;&nbsp;{$expertsText}&nbsp;&nbsp;&nbsp;</span>";
+      echo "<span class='nav-two'   id='linke2'>&nbsp;&nbsp;{$expertsText}&nbsp;&nbsp;&nbsp;</span>";
     }
     if ( $showR )
     {
-      echo "<span class='nav-three' id='linkr1'>&nbsp;&nbsp;{$projectsText}&nbsp;&nbsp;&nbsp;</span>\n";
-      echo "<span class='nav-three' id='linkr2'>&nbsp;&nbsp;{$projectsText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-three' id='linkr1'>&nbsp;&nbsp;{$projectsText}&nbsp;&nbsp;&nbsp;</span>";
+      echo "<span class='nav-three' id='linkr2'>&nbsp;&nbsp;{$projectsText}&nbsp;&nbsp;&nbsp;</span>";
     }
     if ( $showU )
     {
-      echo "<span class='nav-four'  id='linku1'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>\n";
-      echo "<span class='nav-four'  id='linku2'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>\n";
+      echo "<span class='nav-four'  id='linku1'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>";
+      echo "<span class='nav-four'  id='linku2'>&nbsp;&nbsp;{$publicationsText}&nbsp;&nbsp;&nbsp;</span>";
     }
     echo "</div>\n"; // nav
   }
@@ -586,11 +594,11 @@ try
     if ( $institutes->size() >= 1 )
     {
       echo "<tr class='seektrlabels' valign=top>";
-      echo "<td class='seektdlabels'>Abbr.</td>";
-      echo "<td class='seektdlabels'>Name</td>";
-      echo "<td class='seektdlabels'>Country</td>";
-      echo "<td class='seektdlabels' width=50%>Description</td>";
-      echo "<td class='seektdlabels'>Web</td>";
+      echo "<td class='seektdlabels'><br>Abbr.</td>";
+      echo "<td class='seektdlabels'><br>Name</td>";
+      echo "<td class='seektdlabels'><br>Country</td>";
+      echo "<td class='seektdlabels' width=50%><br>Description</td>";
+      echo "<td class='seektdlabels'><br>Web</td>";
       echo "</tr>\n";
     }
     
@@ -626,13 +634,13 @@ try
     if ( $experts->size() >= 1 )
     {
       echo "<tr class='seektrlabels' valign=top>";
-      echo "<td class='seektdlabels'>Surname</td>";
-      echo "<td class='seektdlabels'>First name(s)</td>";
-      echo "<td class='seektdlabels'>Title</td>";
-      echo "<td class='seektdlabels'>E-Mail</td>";
-      echo "<td class='seektdlabels'>Phone number</td>";
-      echo "<td class='seektdlabels'>Skype ID</td>";
-      echo "<td class='seektdlabels'>Expertise</td>";
+      echo "<td class='seektdlabels'><br>Surname</td>";
+      echo "<td class='seektdlabels'><br>First name(s)</td>";
+      echo "<td class='seektdlabels'><br>Title</td>";
+      echo "<td class='seektdlabels'><br>E-Mail</td>";
+      echo "<td class='seektdlabels'><br>Phone number</td>";
+      echo "<td class='seektdlabels'><br>Skype ID</td>";
+      echo "<td class='seektdlabels'><br>Expertise</td>";
       //echo "<td class='seektdlabels'>Institute</td>";
       echo "</tr>\n";
     }
@@ -673,12 +681,12 @@ try
     if ( $projects->size() >= 1 )
     {
       echo "<tr class='seektrlabels' valign=top>";
-      echo "<td class='seektdlabels'>Short Title</td>";
-      echo "<td class='seektdlabels'>Long Title</td>";
-      echo "<td class='seektdlabels' width=50%>Description</td>";
-      echo "<td class='seektdlabels' width=40px>Start</td>";
-      echo "<td class='seektdlabels' width=40px>End</td>";
-      echo "<td class='seektdlabels'>Home Page</td>";
+      echo "<td class='seektdlabels'><br>Short Title</td>";
+      echo "<td class='seektdlabels'><br>Long Title</td>";
+      echo "<td class='seektdlabels' width=50%><br>Description</td>";
+      echo "<td class='seektdlabels' width=40px><br>Start</td>";
+      echo "<td class='seektdlabels' width=40px><br>End</td>";
+      echo "<td class='seektdlabels'><br>Home Page</td>";
       //echo "<td class='seektdlabels'>Contact Person</td>";
       echo "</tr>\n";
     }
@@ -719,9 +727,9 @@ try
     if ( $publications->size() >= 1 )
     {
       echo "<tr class='seektrlabels' valign=top>";
-      echo "<td class='seektdlabels' width=55px>Publ. Date</td>";
-      echo "<td class='seektdlabels'>Quotation</td>";
-      echo "<td class='seektdlabels'>Type</td>";
+      echo "<td class='seektdlabels' width=55px><br>Publ. Date</td>";
+      echo "<td class='seektdlabels'><br>Quotation</td>";
+      echo "<td class='seektdlabels'><br>Type</td>";
       //echo "<td class='seektdlabels'>Institute</td>";
       echo "</tr>\n";
     }
@@ -761,23 +769,14 @@ if ( $showResultsAndTabs )
 {
   ?><script>
   
-  $( "#linki1" ).click( function() { showTab( "i" )} );
-  $( "#linke1" ).click( function() { showTab( "e" )} );
-  $( "#linkr1" ).click( function() { showTab( "r" )} );
-  $( "#linku1" ).click( function() { showTab( "u" )} );
-  $( "#linki2" ).click( function() { showTab( "i" )} );
-  $( "#linke2" ).click( function() { showTab( "e" )} );
-  $( "#linkr2" ).click( function() { showTab( "r" )} );
-  $( "#linku2" ).click( function() { showTab( "u" )} );
-  
-  $( "#linki1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linki2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linke1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linke2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linkr1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linkr2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linku1" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
-  $( "#linku2" ).hover( function() { changeCursorToLink(); }, function() { changeCursorToAuto(); } );
+  $( "#linki1" ).click( function() { showTab( "i" ); } );
+  $( "#linke1" ).click( function() { showTab( "e" ); } );
+  $( "#linkr1" ).click( function() { showTab( "r" ); } );
+  $( "#linku1" ).click( function() { showTab( "u" ); } );
+  $( "#linki2" ).click( function() { showTab( "i" ); } );
+  $( "#linke2" ).click( function() { showTab( "e" ); } );
+  $( "#linkr2" ).click( function() { showTab( "r" ); } );
+  $( "#linku2" ).click( function() { showTab( "u" ); } );
   
   showTab( "<?php echo $tab; ?>" );
   </script><?php

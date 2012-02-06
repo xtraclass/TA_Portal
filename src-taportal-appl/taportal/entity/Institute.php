@@ -187,7 +187,7 @@ class Institute extends EntityBase
    */
   public function setDescription( $x )
   {
-    $this->checkMaximumLength( $x, 500, 'Description' );
+    $this->checkMaximumLength( $x, 1000, 'Description' );
     $this->Description = $x;
     return $this;
   }

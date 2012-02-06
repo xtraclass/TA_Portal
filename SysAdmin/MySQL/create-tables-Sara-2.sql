@@ -93,7 +93,7 @@ create table joomla_project (
   
   shorttitle varchar(40) not null,
   longtitle varchar(250) not null,
-  shortdescription varchar(1000),
+  shortdescription varchar(500),
   startdate date,
   enddate date,
   partnercountries varchar(150),

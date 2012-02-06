@@ -140,6 +140,17 @@ class Vector
 
 
   /**
+   * This returns the current number of elements in the Vector.
+   */
+  public final function getSize()
+  {
+    
+    return count( $this->data );
+  }
+
+
+
+  /**
    * This returns TRUE, if the Vector contains at least one element.
    * Enter description here ...
    */

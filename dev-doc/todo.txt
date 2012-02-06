@@ -1,4 +1,3 @@
-Suche im Baum
 
 
 publ data in DB als yyyy or full date

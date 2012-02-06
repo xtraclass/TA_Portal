@@ -56,7 +56,7 @@ class Project extends EntityBase
 
   public function setShortDescriptionE( $x )
   {
-    $this->checkMaximumLength( $x, 500, 'ShortDescriptionE' );
+    $this->checkMaximumLength( $x, 1000, 'ShortDescriptionE' );
     $this->ShortDescriptionE = $x;
     return $this;
   }

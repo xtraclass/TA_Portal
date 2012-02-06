@@ -63,18 +63,14 @@ $showResultsWanted = isset( $reqSearchText );
 }
 
 .seektr {
-	border-width: 0;
-	border-color: #FFFFFF;
-	border-spacing: 2 !important;
+	//border-spacing: 2 !important;
 	cellspacing: 0 !important;
 	cellpadding: 4 !important;
 	height: 2em;
 }
 
 .seektr2 {
-	border-width: 0;
-	border-color: #FFFFFF;
-	border-spacing: 2 !important;
+	//border-spacing: 2 !important;
 	cellspacing: 0 !important;
 	cellpadding: 4 !important;
 	background-color: #F6F6FF;
@@ -94,6 +90,14 @@ $showResultsWanted = isset( $reqSearchText );
 }
 
 .seektd {
+	border-width: 0;
+	border-color: #FFFFFF;
+	border-spacing: 2 !important;
+	cellspacing: 0 !important;
+	cellpadding: 4 !important;
+}
+
+.seektdbold {
 	border-width: 0;
 	border-color: #FFFFFF;
 	border-spacing: 2 !important;
@@ -139,12 +143,22 @@ $showResultsWanted = isset( $reqSearchText );
 	font-weight: bold;
   font-size: 150%;
 	text-decoration: none;
+	padding: 5px;
 }
 
 .noncurrenttab
 	{
 	background: #DDDDDD;
+	color: #202020;
+	font-style: italic;
 	text-decoration: none;
+	padding: 5px;
+}
+
+.noncurrenttab a:hover
+	{
+	font-style: normal;
+	font-weight: bold;
 }
 
 .datasearchform {
@@ -168,6 +182,14 @@ $showResultsWanted = isset( $reqSearchText );
 	  padding-bottom: 0.2em;
 }
 
+.borderAbove {
+	border-top: 1px solid #0c5e96;
+}
+
+.borderAboveLightGray {
+	border-top: 1px solid #CCCCCC;
+}
+
 -->
 </style><?php
 
@@ -187,7 +209,7 @@ function t( $value )
 
 
 
-function rowWithTableForInstitute( Institute $institute, $cols )
+function rowWithTableForInstitute( Institute $institute, $cols, $break = FALSE )
 {
   $columns = $cols - 1;
   
@@ -196,18 +218,26 @@ function rowWithTableForInstitute( Institute $institute, $cols )
   
   makeDivTableForInstitute( $institute );
   
+  if ( $break )
+  {
+    echo "<br>\n";
+  }
   echo "</td></tr>\n";
 }
 
 
 
-function rowWithTableForExpert( Expert $expert, $cols )
+function rowWithTableForExpert( Expert $expert, $cols, $break = FALSE )
 {
   echo "<tr style='border-width:0%; border-color:#FFFFFF;' ><td style='border-width:0%; border-color:#FFFFFF;' >&nbsp;</td>\n";
   echo "<td style='border-width:0%; border-color:#FFFFFF;' colspan='{$cols}' border='0'>\n";
   
   makeDivTableForExpert( $expert );
   
+  if ( $break )
+  {
+    echo "<br>\n";
+  }
   echo "</td></tr>\n";
 }
 
@@ -215,26 +245,24 @@ function rowWithTableForExpert( Expert $expert, $cols )
 
 function makeDivTableForInstitute( Institute $x )
 {
-  echo "<table style='border-width:0%; border-color:#FFFFFF;'' width='100%' cellpadding='2' cellspacing='2'>\n";
+  echo "<table cellpadding='2' cellspacing='2'>\n";
   
-  echo "<tr>\n";
-  echo "<td class='seektdsmall' colspan='5'>Belongs to institute:</td>\n";
+  echo "<tr valign=top class='borderAboveLightGray'>\n";
+  echo "<td class='seektd	borderAboveLightGray' colspan='4'>Belongs to institute:</td>\n";
   echo "</tr>\n";
   
-  echo "<tr>\n";
+  echo "<tr valign=top>\n";
   echo "<td class='seektdsmall'>Abbr.</td>\n";
   echo "<td class='seektdsmall'>Name</td>\n";
   echo "<td class='seektdsmall'>Country</td>\n";
-  echo "<td class='seektdsmall'>Description</td>\n";
   echo "<td class='seektdsmall'>Web</td>\n";
   echo "</tr>\n";
   
-  echo "<tr>\n";
+  echo "<tr valign=top>\n";
   echo "<td class='seektdsmall'>{$x->getAbbreviation()}</div></td>\n";
   echo "<td class='seektdsmall'>{$x->getName()}</td>\n";
   echo "<td class='seektdsmall'>{$x->getCountryCode()}</td>\n";
-  echo "<td class='seektdsmall'>{$x->getDescription()}</td>\n";
-  echo "<td class='seektdsmall'>{$x->getURL()}</td>\n";
+  echo "<td class='seektdsmall'>" . url( $x->getURL() ) . "</td>\n";
   echo "</tr>\n";
   
   echo "</table>\n";
@@ -244,30 +272,28 @@ function makeDivTableForInstitute( Institute $x )
 
 function makeDivTableForExpert( Expert $x )
 {
-  echo "<table style='border-width:0%; border-color:#FFFFFF;'' width='100%' cellpadding='2' cellspacing='2'>\n";
+  echo "<table cellpadding='2' cellspacing='2'>\n";
   
-  echo "<tr>\n";
-  echo "<td class='seektdsmall' colspan='7'>Contact person:</td>\n";
+  echo "<tr valign=top class='borderAboveLightGray'>\n";
+  echo "<td class='seektd borderAboveLightGray' colspan='6'>Contact person:</td>\n";
   echo "</tr>\n";
   
-  echo "<tr>\n";
+  echo "<tr valign=top>\n";
   echo "<td class='seektdsmall'>Surname</td>";
   echo "<td class='seektdsmall'>First name(s)</td>";
   echo "<td class='seektdsmall'>Title</td>";
   echo "<td class='seektdsmall'>E-Mail</td>";
   echo "<td class='seektdsmall'>Phone number</td>";
   echo "<td class='seektdsmall'>Skype ID</td>";
-  echo "<td class='seektdsmall'>Expertise</td>";
   echo "</tr>\n";
   
-  echo "<tr>\n";
+  echo "<tr valign=top>\n";
   echo "<td class='seektdsmall'>" . t( $x->getSurname() ) . "</td>";
   echo "<td class='seektdsmall'>" . t( $x->getFirstnames() ) . "</td>";
   echo "<td class='seektdsmall'>" . t( $x->getExpTitle() ) . "</td>";
   echo "<td class='seektdsmall'>" . email( $x->getEMail() ) . "</td>";
   echo "<td class='seektdsmall'>" . t( $x->getPhoneNumber() ) . "</td>";
   echo "<td class='seektdsmall'>" . t( $x->getSkypeID() ) . "</td>";
-  echo "<td class='seektdsmall'>" . t( $x->getExpertise() ) . "</td>";
   echo "</tr>\n";
   
   echo "</table>\n";
@@ -445,10 +471,10 @@ try
 
   echo "<div class='datasearchform'>\n";
   
-  echo "<form name='search_form' action='" . JRoute::_('index.php?option=com_seek') . "' method='get'>\n";
-  echo "<input type='text' name='x' id='searchField' value='$reqSearchText' size='30' class='input ' />\n";
+  echo "<form id='searchForm' name='search_form' action='" . JRoute::_('index.php?option=com_seek') . "' method='get'>\n";
+  echo "<input type='text' name='x' id='searchField' value='$reqSearchText' size='30' class='input searchies' />\n";
   echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
-  echo "<input type='submit' value='Search' class='button'/>\n";
+  echo "<input id='searchButton' type='submit' value='Search' class='button searchies'/>\n";
   //echo "&nbsp;&nbsp;&nbsp;&nbsp;\n";
   //echo "<input type='reset' value='Clear' class='button'/>\n";
   echo "</form>\n";
@@ -559,11 +585,11 @@ try
     
     if ( $institutes->size() >= 1 )
     {
-      echo "<tr class='seektrlabels'>";
+      echo "<tr class='seektrlabels' valign=top>";
       echo "<td class='seektdlabels'>Abbr.</td>";
       echo "<td class='seektdlabels'>Name</td>";
       echo "<td class='seektdlabels'>Country</td>";
-      echo "<td class='seektdlabels'>Description</td>";
+      echo "<td class='seektdlabels' width=50%>Description</td>";
       echo "<td class='seektdlabels'>Web</td>";
       echo "</tr>\n";
     }
@@ -574,14 +600,14 @@ try
       if ( !is_null( $x ) )
       {
         if ( $i % 2 == 1 )
-          echo "<tr class='seektr2'>";
+          echo "<tr class='seektr2 borderAbove' valign=top>";
         else
-          echo "<tr class='seektr'>";
-        echo "<td class='seektd'>" . t( $x->getAbbreviation() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getName() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getCountryCode() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getDescription() ) . "</td>";
-        echo "<td class='seektd'>" . url( $x->getURL() ) . "</td>";
+          echo "<tr class='seektr borderAbove' valign=top>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getAbbreviation() ) . "</td>";
+        echo "<td class='seektdbold borderAbove'>" . t( $x->getName() ) . "<br>&nbsp;</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getCountryCode() ) . "</td>";
+        echo "<td class='seektd borderAbove' width=50%>" . t( $x->getDescription() ) . "<br>&nbsp;</td>";
+        echo "<td class='seektd borderAbove'>" . url( $x->getURL() ) . "<br>&nbsp;</td>";
         echo "</tr>\n";
       }
     }
@@ -599,7 +625,7 @@ try
     
     if ( $experts->size() >= 1 )
     {
-      echo "<tr class='seektrlabels'>";
+      echo "<tr class='seektrlabels' valign=top>";
       echo "<td class='seektdlabels'>Surname</td>";
       echo "<td class='seektdlabels'>First name(s)</td>";
       echo "<td class='seektdlabels'>Title</td>";
@@ -617,19 +643,19 @@ try
       if ( !is_null( $x ) )
       {
         if ( $i % 1 == 0 )
-          echo "<tr class='seektr2'>";
+          echo "<tr class='seektr2 borderAbove' valign=top>";
         else
-          echo "<tr class='seektr'>";
-        echo "<td class='seektd'>" . t( $x->getSurname() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getFirstnames() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getExpTitle() ) . "</td>";
-        echo "<td class='seektd'>" . email( $x->getEMail() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getPhoneNumber() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getSkypeID() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getExpertise() ) . "</td>";
+          echo "<tr class='seektr borderAbove' valign=top>";
+        echo "<td class='seektdbold borderAbove'>" . t( $x->getSurname() ) . "</td>";
+        echo "<td class='seektdbold borderAbove'>" . t( $x->getFirstnames() ) . "</td>";
+        echo "<td class='seektdbold borderAbove'>" . t( $x->getExpTitle() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . email( $x->getEMail() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getPhoneNumber() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getSkypeID() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getExpertise() ) . "</td>";
         //echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
         echo "</tr>\n";
-        rowWithTableForInstitute( $x->getInstitute(), 7 );
+        rowWithTableForInstitute( $x->getInstitute(), 7, TRUE );
       }
     }
     echo "</table><br><br>\n";
@@ -646,12 +672,12 @@ try
     
     if ( $projects->size() >= 1 )
     {
-      echo "<tr class='seektrlabels'>";
+      echo "<tr class='seektrlabels' valign=top>";
       echo "<td class='seektdlabels'>Short Title</td>";
       echo "<td class='seektdlabels'>Long Title</td>";
-      echo "<td class='seektdlabels'>Description</td>";
-      echo "<td class='seektdlabels'>Start</td>";
-      echo "<td class='seektdlabels'>End</td>";
+      echo "<td class='seektdlabels' width=50%>Description</td>";
+      echo "<td class='seektdlabels' width=40px>Start</td>";
+      echo "<td class='seektdlabels' width=40px>End</td>";
       echo "<td class='seektdlabels'>Home Page</td>";
       //echo "<td class='seektdlabels'>Contact Person</td>";
       echo "</tr>\n";
@@ -663,19 +689,19 @@ try
       if ( !is_null( $x ) )
       {
         if ( $i % 1 == 0 )
-          echo "<tr class='seektr2'>";
+          echo "<tr class='seektr2 borderAbove' valign=top>";
         else
-          echo "<tr class='seektr'>";
-        echo "<td class='seektd'>" . t( $x->getShortTitleE() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getLongTitleE() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getShortDescriptionE() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getStartDate() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getEndDate() ) . "</td>";
-        echo "<td class='seektd'>" . url( $x->getHomePage() ) . "</td>";
+          echo "<tr class='seektr borderAbove' valign=top>";
+        echo "<td class='seektdbold borderAbove'>" . t( $x->getShortTitleE() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getLongTitleE() ) . "</td>";
+        echo "<td class='seektd borderAbove' width=50%>" . t( $x->getShortDescriptionE() ) . "</td>";
+        echo "<td class='seektd borderAbove' width=40px>" . t( $x->getStartDate() ) . "</td>";
+        echo "<td class='seektd borderAbove' width=40px>" . t( $x->getEndDate() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . url( $x->getHomePage() ) . "</td>";
         //echo "<td class='seektd'>" . expert( $x->getContactPerson() ) . "</td>";
         echo "</tr>\n";
-        rowWithTableForExpert( $x->getContactPerson(), 6 );
-        rowWithTableForInstitute( $x->getContactPerson()->getInstitute(), 6 );
+        rowWithTableForExpert( $x->getContactPerson(), 6, FALSE );
+        rowWithTableForInstitute( $x->getContactPerson()->getInstitute(), 6, TRUE );
       }
     }
     echo "</table><br><br>\n";
@@ -692,9 +718,9 @@ try
     
     if ( $publications->size() >= 1 )
     {
-      echo "<tr class='seektrlabels'>";
+      echo "<tr class='seektrlabels' valign=top>";
+      echo "<td class='seektdlabels' width=55px>Publ. Date</td>";
       echo "<td class='seektdlabels'>Quotation</td>";
-      echo "<td class='seektdlabels'>Publ. Date</td>";
       echo "<td class='seektdlabels'>Type</td>";
       //echo "<td class='seektdlabels'>Institute</td>";
       echo "</tr>\n";
@@ -706,15 +732,15 @@ try
       if ( !is_null( $x ) )
       {
         if ( $i % 1 == 0 )
-          echo "<tr class='seektr2'>";
+          echo "<tr class='seektr2 borderAbove' valign=top>";
         else
-          echo "<tr class='seektr'>";
-        echo "<td class='seektd'>" . t( $x->getQuotation() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getPublDate() ) . "</td>";
-        echo "<td class='seektd'>" . t( $x->getPublType()->value() ) . "</td>";
+          echo "<tr class='seektr borderAbove' valign=top>";
+        echo "<td class='seektd borderAbove' width=55px>" . t( $x->getPublDate() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getQuotation() ) . "</td>";
+        echo "<td class='seektd borderAbove'>" . t( $x->getPublType()->value() ) . "</td>";
         //      echo "<td class='seektd'>" . institute( $x->getInstitute() ) . "</td>";
         echo "</tr>\n";
-        echo rowWithTableForInstitute( $x->getInstitute(), 3 );
+        echo rowWithTableForInstitute( $x->getInstitute(), 3, TRUE );
       }
     }
     echo "</table><br><br>\n";
